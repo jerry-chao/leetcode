@@ -16,15 +16,14 @@ package main
 func twoSum(nums []int, target int) []int {
 	result := []int{}
 	if len(nums) < 2 {
-		return result
+		return
 	}
-	hash := make(map[int]int)
-	for index, num := range nums {
-		numIndex, ok := hash[num]
+	hash := map[int]int{}
+	for _, num := range nums {
+		had, ok := hash[num]
 		if ok {
-			return []int{numIndex, index}
+			
 		}
-		hash[target-num] = index
 	}
 	return result
 }

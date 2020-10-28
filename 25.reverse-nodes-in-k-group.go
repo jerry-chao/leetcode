@@ -18,7 +18,6 @@ package main
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	hair := &ListNode{Next: head}
 	pre := hair
-
 	for head != nil {
 		tail := pre
 		for i := 0; i < k; i++ {
@@ -27,24 +26,23 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 				return hair.Next
 			}
 		}
-		nex := tail.Next
+		tmp := tail.Next
 		head, tail = myReverse(head, tail)
 		pre.Next = head
-		tail.Next = nex
 		pre = tail
-		head = tail.Next
+		head = tmp
 	}
 	return hair.Next
 }
 
 func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
-	prev := tail.Next
+	pre := tail.Next
 	current := head
-	for prev != tail {
-		nex := current.Next
-		current.Next = prev
-		prev = current
-		current = nex
+	for pre != tail {
+		tmp := current.Next
+		current.Next = pre
+		pre = current
+		current = tmp
 	}
 	return tail, head
 }
