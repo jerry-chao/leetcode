@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * @lc app=leetcode id=141 lang=golang
  *
@@ -17,26 +15,22 @@ import "fmt"
  * }
  */
 func hasCycle(head *ListNode) bool {
-	if head == nil {
-		return false
-	}
-	slow := head
-	fast := head
-	steps := 0
-	for fast != nil && (fast != slow || steps == 0) {
-		fast = fast.Next
-		if fast == nil {
-			break
+	// first move forward 1 step and second move 2 step
+	first, second := head, head
+	step := 0
+	for first != second || step == 0 {
+		if second == nil {
+			return false
 		}
-		fast = fast.Next
-		slow = slow.Next
-		steps++
+		first = first.Next
+		second = second.Next
+		if second == nil {
+			return false
+		}
+		step++
+		second = second.Next
 	}
-	fmt.Println(fast, slow, steps)
-	if fast == slow && steps != 0 {
-		return true
-	}
-	return false
+	return true
 }
 
 // @lc code=end

@@ -1,8 +1,6 @@
 package leetcode
 
-import (
-	"strconv"
-)
+import "strconv"
 
 /*
  * @lc app=leetcode id=412 lang=golang
@@ -11,20 +9,34 @@ import (
  */
 
 // @lc code=start
+
+type FizzMap struct {
+	Val int
+	Str string
+}
+
+var hash []FizzMap = []FizzMap{
+	FizzMap{Val: 3, Str: "Fizz"},
+	FizzMap{Val: 5, Str: "Buzz"},
+}
+
 func fizzBuzz(n int) []string {
 	result := []string{}
-	for i := 1; i < n+1; i++ {
-		msg := ""
-		if i%3 == 0 {
-			msg = msg + "Fizz"
+	for i := 1; i <= n; i++ {
+		result = append(result, fizzBuzzString(i))
+	}
+	return result
+}
+
+func fizzBuzzString(n int) string {
+	result := ""
+	for _, value := range hash {
+		if n%value.Val == 0 {
+			result = result + value.Str
 		}
-		if i%5 == 0 {
-			msg = msg + "Buzz"
-		}
-		if msg == "" {
-			msg = strconv.Itoa(i)
-		}
-		result = append(result, msg)
+	}
+	if result == "" {
+		result = strconv.Itoa(n)
 	}
 	return result
 }

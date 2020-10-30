@@ -9,39 +9,42 @@ package leetcode
 import "fmt"
 
 // @lc code=start
+func SearchMatrix(matrix [][]int, target int) bool {
+	return searchMatrix(matrix, target)
+}
 func searchMatrix(matrix [][]int, target int) bool {
 	if len(matrix) == 0 {
 		return false
 	}
+
 	for i := 0; i < len(matrix); i++ {
-		fmt.Println("found group:", i)
-		if len(matrix[i]) > 0 && matrix[i][0] > target {
-			if i > 0 {
-				return search(matrix[i-1], target)
-			} else {
-				return false
-			}
+		if len(matrix[i]) == 0 {
+			return false
+		}
+		if matrix[i][0] > target {
+			return false
+		} else if matrix[i][len(matrix[i])-1] >= target {
+			return searchTarget(matrix[i], target)
+		} else {
+			continue
 		}
 	}
-	return search(matrix[len(matrix)-1], target)
+
+	return false
 }
 
-func search(nums []int, target int) bool {
-	fmt.Println("xxx")
-	if len(nums) == 0 {
-		return false
-	}
-	i := 0
-	j := len(nums) - 1
-	for i <= j {
-		mid := (i + j) / 2
-		fmt.Println("mid:", mid, nums[mid])
+func searchTarget(nums []int, target int) bool {
+	start := 0
+	end := len(nums)
+	fmt.Println("targetArrayLen:", len(nums), nums[0])
+	for start <= end {
+		mid := (start + end) / 2
 		if nums[mid] == target {
 			return true
-		} else if nums[mid] > target {
-			j = mid - 1
+		} else if nums[mid] < target {
+			start = mid + 1
 		} else {
-			i = mid + 1
+			end = mid - 1
 		}
 	}
 	return false
