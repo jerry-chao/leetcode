@@ -29,20 +29,12 @@ func reverseList(head *ListNode) *ListNode {
 
 	// targeted linked list head
 	var pre *ListNode
-<<<<<<< HEAD
 	current := head
 	for current != nil {
 		tmp := current.Next
 		current.Next = pre
 		pre = current
 		current = tmp
-=======
-	for head != nil {
-		tmp := head.Next
-		head.Next = pre
-		pre = head
-		head = tmp
->>>>>>> modif leetcode to project
 	}
 	return pre
 }

@@ -17,7 +17,6 @@ import "fmt"
 // @lc code=start
 func twoSum(nums []int, target int) []int {
 	result := []int{}
-<<<<<<< HEAD
 	if len(nums) < 2 {
 		return
 	}
@@ -25,17 +24,7 @@ func twoSum(nums []int, target int) []int {
 	for _, num := range nums {
 		had, ok := hash[num]
 		if ok {
-			
-=======
-	if len(nums) == 0 {
-		return result
-	}
-	hash := map[int]int{}
-	for index, num := range nums {
-		preIndex, ok := hash[num]
-		if ok {
-			return []int{preIndex, index}
->>>>>>> modif leetcode to project
+
 		}
 	}
 	return result

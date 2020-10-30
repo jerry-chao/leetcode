@@ -32,10 +32,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 				return hair.Next
 			}
 		}
-<<<<<<< HEAD
-=======
 		// store tail.Next
->>>>>>> modif leetcode to project
 		tmp := tail.Next
 		head, tail = myReverse(head, tail)
 		pre.Next = head
@@ -46,10 +43,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 }
 
 func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
-<<<<<<< HEAD
-=======
 	// store pre head linked list
->>>>>>> modif leetcode to project
 	pre := tail.Next
 	current := head
 	for pre != tail {
