@@ -15,8 +15,14 @@ package main
  * }
  */
 
+// type ListNode struct {
+// 	Val  int
+// 	Next *ListNode
+// }
+
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	hair := &ListNode{Next: head}
+	// the last node of reversed link list
 	pre := hair
 	for head != nil {
 		tail := pre
@@ -26,6 +32,10 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 				return hair.Next
 			}
 		}
+<<<<<<< HEAD
+=======
+		// store tail.Next
+>>>>>>> modif leetcode to project
 		tmp := tail.Next
 		head, tail = myReverse(head, tail)
 		pre.Next = head
@@ -36,6 +46,10 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 }
 
 func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
+<<<<<<< HEAD
+=======
+	// store pre head linked list
+>>>>>>> modif leetcode to project
 	pre := tail.Next
 	current := head
 	for pre != tail {
@@ -48,3 +62,16 @@ func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
 }
 
 // @lc code=end
+
+// func main() {
+// 	Node5 := &ListNode{Val: 5}
+// 	Node4 := &ListNode{Val: 4, Next: Node5}
+// 	Node3 := &ListNode{Val: 3, Next: Node4}
+// 	Node2 := &ListNode{Val: 2, Next: Node3}
+// 	Node1 := &ListNode{Val: 1, Next: Node2}
+// 	Node := reverseKGroup(Node1, 2)
+// 	for Node != nil {
+// 		fmt.Print(Node.Val, " ")
+// 		Node = Node.Next
+// 	}
+// }

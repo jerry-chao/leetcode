@@ -10,36 +10,43 @@ import "fmt"
 
 // @lc code=start
 func isValid(s string) bool {
+	if len(s)%2 != 0 {
+		return false
+	}
 	stack := []string{}
 	for i := 0; i < len(s); i++ {
-		if isFirst(string(s[i])) {
-			// push to stack
-			stack = append(stack, reverse(string(s[i])))
-		} else {
-			// pop stack
-			if len(stack) == 0 {
-				return false
-			}
-			if string(s[i]) != stack[len(stack)-1] {
-				return false
-			}
+		char := string(s[i])
+		if isLeft(char) {
+			stack = append(stack, transfer(char))
+			continue
+		}
+
+		if len(stack) > 0 && char == stack[len(stack)-1] {
 			stack = stack[:len(stack)-1]
+		} else {
+			return false
 		}
 	}
-	return len(stack) == 0
+	if len(stack) == 0 {
+		return true
+	}
+	return false
 }
 
-func isFirst(char string) bool {
-	return char == "(" || char == "[" || char == "{"
+func isLeft(char string) bool {
+	if char == "{" || char == "[" || char == "(" {
+		return true
+	}
+	return false
 }
 
-func reverse(char string) string {
-	if char == "(" {
-		return ")"
-	} else if char == "[" {
-		return "]"
-	} else {
+func transfer(char string) string {
+	if char == "{" {
 		return "}"
+	} else if char == "(" {
+		return ")"
+	} else {
+		return "]"
 	}
 }
 

@@ -25,7 +25,6 @@ func maxSlidingWindow(nums []int, k int) []int {
 			window = window[:len(window)-1]
 		}
 		window = append(window, i)
-		fmt.Println(i, x, window)
 		if i >= k-1 {
 			res = append(res, nums[window[0]])
 		}

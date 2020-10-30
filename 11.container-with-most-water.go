@@ -12,20 +12,19 @@ import (
 
 // @lc code=start
 func maxArea(height []int) int {
-	if len(height) < 2 {
-		return 0
-	}
 
-	first := 0
-	second := len(height) - 1
 	maxArea := 0
-	for first < second {
-		if height[first] > height[second] {
-			maxArea = max(maxArea, (second-first)*height[second])
-			second--
+	if len(height) < 2 {
+		return maxArea
+	}
+	i, j := 0, len(height)-1
+	for i < j {
+		if height[i] > height[j] {
+			maxArea = max(maxArea, height[j]*(j-i))
+			j--
 		} else {
-			maxArea = max(maxArea, (second-first)*height[first])
-			first++
+			maxArea = max(maxArea, height[i]*(j-i))
+			i++
 		}
 	}
 	return maxArea

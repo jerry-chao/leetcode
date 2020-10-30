@@ -11,16 +11,19 @@ import "fmt"
 // @lc code=start
 func intersect(nums1 []int, nums2 []int) []int {
 	result := []int{}
-	hash := map[int]int{}
-
-	for _, num1 := range nums1 {
-		hash[num1] = hash[num1] + 1
+	if len(nums1) > len(nums2) {
+		return intersect(nums2, nums1)
 	}
+	hash := map[int]int{}
+	for _, num1 := range nums1 {
+		hash[num1]++
+	}
+
 	for _, num2 := range nums2 {
 		had, ok := hash[num2]
 		if ok && had > 0 {
-			hash[num2] = hash[num2] - 1
 			result = append(result, num2)
+			hash[num2]--
 		}
 	}
 	return result

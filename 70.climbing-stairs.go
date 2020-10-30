@@ -31,7 +31,7 @@ func climbStairs(n int) int {
 		return 2
 	}
 	first, second := 1, 2
-	for i := 3; i <= n; i++ {
+	for i := 2; i < n; i++ {
 		tmp := second
 		second = first + second
 		first = tmp
