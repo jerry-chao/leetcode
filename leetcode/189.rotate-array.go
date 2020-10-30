@@ -1,6 +1,4 @@
-package main
-
-import "leetcode/utils"
+package leetcode
 
 /*
  * @lc app=leetcode id=189 lang=golang
@@ -14,7 +12,3 @@ func rotate(nums []int, k int) {
 }
 
 // @lc code=end
-
-func main() {
-	utils.PrintArray([]int{1, 2, 3, 4, 5, 6, 7})
-}

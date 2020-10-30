@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=155 lang=golang
@@ -70,15 +68,3 @@ func min(i, j int) int {
  * param_4 := obj.GetMin();
  */
 // @lc code=end
-
-func main() {
-	obj := Constructor()
-	obj.Push(-2)
-	obj.Push(0)
-	obj.Push(-3)
-	param_1 := obj.GetMin()
-	obj.Pop()
-	param_2 := obj.Top()
-	param_3 := obj.GetMin()
-	fmt.Println(param_1, param_2, param_3)
-}

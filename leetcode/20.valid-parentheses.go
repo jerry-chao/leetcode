@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=20 lang=golang
@@ -17,7 +15,7 @@ func isValid(s string) bool {
 	for i := 0; i < len(s); i++ {
 		char := string(s[i])
 		if isLeft(char) {
-			stack = append(stack, transfer(char))
+			stack = append(stack, transferValidParentheses(char))
 			continue
 		}
 
@@ -40,7 +38,7 @@ func isLeft(char string) bool {
 	return false
 }
 
-func transfer(char string) string {
+func transferValidParentheses(char string) string {
 	if char == "{" {
 		return "}"
 	} else if char == "(" {
@@ -51,9 +49,3 @@ func transfer(char string) string {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(isValid("()"))
-	fmt.Println(isValid("(]"))
-	fmt.Println(isValid("["))
-}

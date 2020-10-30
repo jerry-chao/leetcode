@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=1021 lang=golang
@@ -32,9 +30,3 @@ func removeOuterParentheses(S string) string {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(removeOuterParentheses("(()())(())"))
-	fmt.Println(removeOuterParentheses("(()(()))"))
-	fmt.Println(removeOuterParentheses("(()())(())(()(()))"))
-}

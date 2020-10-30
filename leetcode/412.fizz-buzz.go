@@ -1,7 +1,6 @@
-package main
+package leetcode
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -31,13 +30,3 @@ func fizzBuzz(n int) []string {
 }
 
 // @lc code=end
-func main() {
-	result := fizzBuzz(15)
-	for i := 0; i < len(result); i++ {
-		fmt.Print(result[i], " ")
-	}
-}
-
-
-
-

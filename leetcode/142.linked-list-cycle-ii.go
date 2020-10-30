@@ -1,3 +1,5 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=142 lang=golang
  *
@@ -42,4 +44,3 @@ func detectCycle(head *ListNode) *ListNode {
 }
 
 // @lc code=end
-

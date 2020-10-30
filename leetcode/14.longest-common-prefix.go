@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=14 lang=golang
@@ -50,6 +48,10 @@ import "fmt"
  */
 
 // @lc code=start
+func LongestCommonPrefix(strs []string) string {
+	return longestCommonPrefix(strs)
+}
+
 func longestCommonPrefix(strs []string) string {
 	if len(strs) == 0 {
 		return ""
@@ -68,9 +70,3 @@ func longestCommonPrefix(strs []string) string {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(longestCommonPrefix([]string{"flower", "flow", "flight"}))
-	fmt.Println(longestCommonPrefix([]string{"dog", "racecar", "car"}))
-	fmt.Println(longestCommonPrefix([]string{"ab", "a"}))
-}

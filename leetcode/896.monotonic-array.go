@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=896 lang=golang
@@ -40,11 +38,3 @@ func transfer(i, j int) int {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(isMonotonic([]int{1, 2, 2, 3}))
-	fmt.Println(isMonotonic([]int{6, 5, 4, 4}))
-	fmt.Println(isMonotonic([]int{1, 3, 2}))
-	fmt.Println(isMonotonic([]int{1, 2, 4, 5}))
-	fmt.Println(isMonotonic([]int{1, 1, 1}))
-}

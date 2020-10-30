@@ -1,3 +1,7 @@
+package leetcode
+
+import "fmt"
+
 /*
  * @lc app=leetcode id=141 lang=golang
  *
@@ -36,4 +40,3 @@ func hasCycle(head *ListNode) bool {
 }
 
 // @lc code=end
-

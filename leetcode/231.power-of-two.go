@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=231 lang=golang
@@ -73,8 +71,3 @@ func isPowerOfTwo(n int) bool {
 }
 
 // @lc code=end
-func main() {
-	fmt.Println(isPowerOfTwo(1))
-	fmt.Println(isPowerOfTwo(16))
-	fmt.Println(isPowerOfTwo(3))
-}

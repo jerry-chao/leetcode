@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package leetcode
 
 /*
  * @lc app=leetcode id=11 lang=golang
@@ -11,6 +7,10 @@ import (
  */
 
 // @lc code=start
+func MaxArea(height []int) int {
+	return maxArea(height)
+}
+
 func maxArea(height []int) int {
 
 	maxArea := 0
@@ -30,15 +30,4 @@ func maxArea(height []int) int {
 	return maxArea
 }
 
-func max(i, j int) int {
-	if i > j {
-		return i
-	}
-	return j
-}
-
 // @lc code=end
-
-func main() {
-	fmt.Println(maxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}))
-}

@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=350 lang=golang
@@ -30,12 +28,3 @@ func intersect(nums1 []int, nums2 []int) []int {
 }
 
 // @lc code=end
-
-func main() {
-	nums1 := []int{1, 2, 2, 1}
-	nums2 := []int{2, 2}
-	for _, num := range intersect(nums1, nums2) {
-		fmt.Print(num)
-		fmt.Print(" ")
-	}
-}

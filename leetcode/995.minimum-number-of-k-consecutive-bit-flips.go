@@ -1,3 +1,5 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=995 lang=golang
  *
@@ -6,7 +8,7 @@
 
 // @lc code=start
 func minKBitFlips(A []int, K int) int {
-    
+	return K
 }
-// @lc code=end
 
+// @lc code=end

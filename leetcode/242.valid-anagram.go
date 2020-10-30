@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=242 lang=golang
@@ -29,8 +27,3 @@ func isAnagram(s string, t string) bool {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(isAnagram("anagram", "nagaram"))
-	fmt.Println(isAnagram("rat", "car"))
-}

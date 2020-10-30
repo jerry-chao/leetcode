@@ -4,14 +4,9 @@
  * [74] Search a 2D Matrix
  */
 
-package main
+package leetcode
 
 import "fmt"
-
-func main() {
-	matrix := [][]int{{}}
-	fmt.Println(searchMatrix(matrix, 3))
-}
 
 // @lc code=start
 func searchMatrix(matrix [][]int, target int) bool {

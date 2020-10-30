@@ -3,25 +3,16 @@
  *
  * [15] 3Sum
  */
-package main
+package leetcode
 
 import (
-	"fmt"
 	"sort"
 )
 
-func main() {
-	nums := []int{0, 0, 0}
-	outs := threeSum(nums)
-	fmt.Println("outs len:", len(outs))
-	for i := 0; i < len(outs); i++ {
-		for j := 0; j < len(outs[i]); j++ {
-			fmt.Println(outs[i][j])
-		}
-	}
-}
-
 // @lc code=start
+func ThreeSum(nums []int) [][]int {
+	return threeSum(nums)
+}
 func threeSum(nums []int) [][]int {
 	result := [][]int{}
 	if len(nums) < 3 {

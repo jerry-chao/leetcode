@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=66 lang=golang
@@ -24,16 +22,3 @@ func plusOne(digits []int) []int {
 }
 
 // @lc code=end
-
-func main() {
-	printArray(plusOne([]int{1, 2, 3}))
-	printArray(plusOne([]int{4, 3, 2, 1}))
-	printArray(plusOne([]int{0}))
-}
-
-func printArray(arr []int) {
-	for i := 0; i < len(arr); i++ {
-		fmt.Print(arr[i], " ")
-	}
-	fmt.Println("")
-}

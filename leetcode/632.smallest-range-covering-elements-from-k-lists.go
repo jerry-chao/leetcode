@@ -1,3 +1,5 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=632 lang=golang
  *
@@ -6,7 +8,7 @@
 
 // @lc code=start
 func smallestRange(nums [][]int) []int {
-    
+	return []int{}
 }
-// @lc code=end
 
+// @lc code=end

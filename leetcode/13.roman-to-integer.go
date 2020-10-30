@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=13 lang=golang
@@ -15,7 +13,7 @@ func romanToInt(s string) int {
 	pre := ""
 	for _, str := range s {
 		if pre != "" {
-			multi, multiPlus := transfer(pre, string(str))
+			multi, multiPlus := transferRomanToInteger(pre, string(str))
 			if multi {
 				result = result + multiPlus
 				pre = ""
@@ -46,7 +44,7 @@ func isFirst(str string) bool {
 	return false
 }
 
-func transfer(pre, str string) (bool, int) {
+func transferRomanToInteger(pre, str string) (bool, int) {
 	if pre == "I" && str == "V" {
 		return true, 4
 	} else if pre == "I" && str == "X" {
@@ -78,10 +76,3 @@ func transferNum(str string) int {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(romanToInt("III"))
-	fmt.Println(romanToInt("IV"))
-	fmt.Println(romanToInt("IX"))
-	fmt.Println(romanToInt("LVIII"))
-}

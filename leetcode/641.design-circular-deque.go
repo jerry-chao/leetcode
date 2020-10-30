@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=641 lang=golang
@@ -17,7 +15,7 @@ type MyCircularDeque struct {
 }
 
 /** Initialize your data structure here. Set the size of the deque to be k. */
-func Constructor(k int) MyCircularDeque {
+func ConstructorMyCircularDeque(k int) MyCircularDeque {
 	queue := make([]int, k)
 	for i := 0; i < k; i++ {
 		queue[i] = -1
@@ -106,21 +104,3 @@ func (this *MyCircularDeque) IsFull() bool {
  * param_8 := obj.IsFull();
  */
 // @lc code=end
-func main() {
-
-	obj := Constructor(3)
-	param_1 := obj.InsertLast(1)
-	param_2 := obj.InsertLast(2)
-	param_3 := obj.InsertFront(3)
-	param_4 := obj.InsertFront(4)
-	fmt.Println(obj.FrontIndex, obj.Count)
-	param_5 := obj.GetRear()
-	param_6 := obj.IsFull()
-	param_7 := obj.DeleteLast()
-	param_8 := obj.InsertFront(4)
-	param_9 := obj.GetFront()
-
-	fmt.Println(param_1, param_2, param_3, param_4)
-	fmt.Println(param_5, param_6, param_7, param_8)
-	fmt.Println(param_9)
-}

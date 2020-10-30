@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=239 lang=golang
@@ -33,11 +31,3 @@ func maxSlidingWindow(nums []int, k int) []int {
 }
 
 // @lc code=end
-func main() {
-	// nums := []int{1}
-	nums := []int{7, 2, 4}
-	for _, num := range maxSlidingWindow(nums, 2) {
-		fmt.Print(num)
-		fmt.Print(" ")
-	}
-}

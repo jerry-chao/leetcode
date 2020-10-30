@@ -1,7 +1,6 @@
-package main
+package leetcode
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -21,9 +20,3 @@ func rotateString(A string, B string) bool {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(rotateString("abcde", "cdeab"))
-	fmt.Println(rotateString("abcde", "abced"))
-	fmt.Println(rotateString("aa", "a"))
-}

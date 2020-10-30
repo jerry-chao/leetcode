@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=70 lang=golang
@@ -40,9 +38,3 @@ func climbStairs(n int) int {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(climbStairs(2))
-	fmt.Println(climbStairs(3))
-	fmt.Println(climbStairs(4))
-}

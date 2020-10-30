@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=283 lang=golang
@@ -57,12 +55,3 @@ func moveZeroes(nums []int) {
 }
 
 // @lc code=end
-
-func main() {
-	nums := []int{0, 1, 0, 3, 12}
-	moveZeroes(nums)
-	for _, num := range nums {
-		fmt.Print(num)
-		fmt.Print(" ")
-	}
-}

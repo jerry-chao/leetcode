@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=88 lang=golang
@@ -30,17 +28,3 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 }
 
 // @lc code=end
-
-func main() {
-	nums1 := []int{7, 8, 0, 0, 0}
-	nums2 := []int{2, 5, 6}
-	merge(nums1, 2, nums2, 3)
-	printArray(nums1)
-}
-
-func printArray(arr []int) {
-	for i := 0; i < len(arr); i++ {
-		fmt.Print(arr[i], " ")
-	}
-	fmt.Println("")
-}

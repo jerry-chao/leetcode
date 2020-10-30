@@ -1,3 +1,5 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=206 lang=golang
  *
@@ -40,4 +42,3 @@ func reverseList(head *ListNode) *ListNode {
 }
 
 // @lc code=end
-

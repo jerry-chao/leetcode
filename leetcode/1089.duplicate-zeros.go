@@ -1,3 +1,5 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=1089 lang=golang
  *
@@ -5,8 +7,8 @@
  */
 
 // @lc code=start
-func duplicateZeros(arr []int)  {
-    
-}
-// @lc code=end
+func duplicateZeros(arr []int) {
 
+}
+
+// @lc code=end

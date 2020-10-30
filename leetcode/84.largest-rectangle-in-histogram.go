@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package leetcode
 
 /*
  * @lc app=leetcode id=84 lang=golang
@@ -43,19 +41,4 @@ func largestRectangleArea(heights []int) int {
 	return maxArea
 }
 
-func max(i, j int) int {
-	if i > j {
-		return i
-	}
-	return j
-}
-
 // @lc code=end
-
-func main() {
-	// fmt.Println(largestRectangleArea([]int{2, 1, 5, 6, 2, 3}))
-	fmt.Println(largestRectangleArea([]int{0, 9}))
-	fmt.Println(largestRectangleArea([]int{5, 4, 1, 2}))
-	fmt.Println(largestRectangleArea([]int{1, 1}))
-	fmt.Println(largestRectangleArea([]int{2, 1, 5, 6, 2, 3}))
-}

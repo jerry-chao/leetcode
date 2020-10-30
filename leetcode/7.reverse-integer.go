@@ -1,7 +1,6 @@
-package main
+package leetcode
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -12,6 +11,10 @@ import (
  */
 
 // @lc code=start
+func Reverse(x int) int {
+	return reverse(x)
+}
+
 func reverse(x int) int {
 	if x < 0 {
 		return -reverse(-x)
@@ -28,12 +31,3 @@ func reverse(x int) int {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(reverse(123))
-	fmt.Println(reverse(-123))
-	fmt.Println(reverse(120))
-	fmt.Println(reverse(0))
-	fmt.Println(reverse(1534236469))
-	fmt.Println(-123 % 10)
-}

@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 import (
 	"fmt"
@@ -66,10 +66,3 @@ func getHint(secret string, guess string) string {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println("getHint:", getHint("1807", "7810"))
-	fmt.Println("getHint:", getHint("1123", "0111"))
-	fmt.Println("getHint:", getHint("1", "0"))
-	fmt.Println("getHint:", getHint("1", "1"))
-}

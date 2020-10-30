@@ -1,7 +1,6 @@
-package main
+package leetcode
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -12,14 +11,18 @@ import (
  */
 
 // @lc code=start
+func IsPalindrome(x int) bool {
+	return isPalindrome(x)
+}
+
 func isPalindrome(x int) bool {
 	if x < 0 {
 		return false
 	}
-	return reverse(x) == x
+	return reversePalindrome(x) == x
 }
 
-func reverse(x int) int {
+func reversePalindrome(x int) int {
 	result := 0
 	for x > 0 {
 		result = result*10 + x%10
@@ -33,10 +36,3 @@ func reverse(x int) int {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(isPalindrome(121))
-	fmt.Println(isPalindrome(-121))
-	fmt.Println(isPalindrome(10))
-	fmt.Println(isPalindrome(-101))
-}

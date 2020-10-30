@@ -1,3 +1,5 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=24 lang=golang
  *
@@ -40,4 +42,3 @@ func swapPairs(head *ListNode) *ListNode {
 }
 
 // @lc code=end
-
