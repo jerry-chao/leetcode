@@ -15,6 +15,7 @@ type MyCircularQueue struct {
 }
 
 /** Initialize your data structure here. Set the size of the queue to be k. */
+// func Constructor(k int) MyCircularQueue {
 func ConstructorMyCircularQueue(k int) MyCircularQueue {
 	queue := make([]int, k)
 	for i := 0; i < k; i++ {
@@ -31,7 +32,8 @@ func (this *MyCircularQueue) EnQueue(value int) bool {
 	if this.IsFull() {
 		return false
 	}
-	this.Queue[(this.FrontIndex+this.Count)%this.Capacity] = value
+	index := (this.FrontIndex + this.Count) % this.Capacity
+	this.Queue[index] = value
 	this.Count++
 	return true
 }
@@ -42,15 +44,17 @@ func (this *MyCircularQueue) DeQueue() bool {
 		return false
 	}
 	this.Queue[this.FrontIndex] = -1
-	this.Count--
 	this.FrontIndex = (this.FrontIndex + 1) % this.Capacity
+	this.Count--
 	return true
 }
 
 /** Get the front item from the queue. */
 func (this *MyCircularQueue) Front() int {
+	if this.IsEmpty() {
+		return -1
+	}
 	return this.Queue[this.FrontIndex]
-
 }
 
 /** Get the last item from the queue. */
@@ -58,7 +62,8 @@ func (this *MyCircularQueue) Rear() int {
 	if this.IsEmpty() {
 		return -1
 	}
-	return this.Queue[(this.FrontIndex+this.Count-1)%this.Capacity]
+	lastIndex := (this.FrontIndex + this.Count - 1) % this.Capacity
+	return this.Queue[lastIndex]
 }
 
 /** Checks whether the circular queue is empty or not. */

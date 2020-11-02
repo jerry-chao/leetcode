@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 /*
  * @lc app=leetcode id=189 lang=golang
  *
@@ -42,15 +40,16 @@ func rotateLoop(nums []int, k int) {
 }
 
 func rotateReverse(nums []int, k int) {
-	n := len(nums)
-	fmt.Println("array len:", n)
-	if n < 2 || k < 1 {
+	if len(nums) < 2 {
 		return
 	}
+	n := len(nums)
 	k = k % n
-	// reverse nums
+	// reverse all array
 	reverseArray(nums)
+	// reverse first k
 	reverseArray(nums[:k])
+	// reverse last n -k
 	reverseArray(nums[k:])
 }
 

@@ -21,14 +21,12 @@ func Constructor() MinStack {
 }
 
 func (this *MinStack) Push(x int) {
-	// push x to stack
 	this.Stack = append(this.Stack, x)
-	// min
+	minValue := x
 	if len(this.Min) > 0 {
-		this.Min = append(this.Min, min(this.GetMin(), x))
-	} else {
-		this.Min = append(this.Min, x)
+		minValue = min(this.GetMin(), x)
 	}
+	this.Min = append(this.Min, minValue)
 }
 
 func (this *MinStack) Pop() {
@@ -41,22 +39,24 @@ func (this *MinStack) Pop() {
 func (this *MinStack) Top() int {
 	if len(this.Stack) > 0 {
 		return this.Stack[len(this.Stack)-1]
+	} else {
+		return -1
 	}
-	return -1
 }
 
 func (this *MinStack) GetMin() int {
-	if len(this.Min) > 0 {
+	if len(this.Stack) > 0 {
 		return this.Min[len(this.Min)-1]
+	} else {
+		return -1
 	}
-	return -1
 }
 
 func min(i, j int) int {
-	if i < j {
-		return i
+	if i > j {
+		return j
 	}
-	return j
+	return i
 }
 
 /**

@@ -11,17 +11,15 @@ func isMonotonic(A []int) bool {
 	if len(A) < 3 {
 		return true
 	}
-	incr := 0
+	status := 0
 	for i := 1; i < len(A); i++ {
-		tmp := transfer(A[i], A[i-1])
-		if tmp == 0 {
+		status1 := transfer(A[i-1], A[i])
+		if status == 0 {
+			status = status1
+		} else if status1 == 0 || status1 == status {
 			continue
-		}
-		if incr != tmp && incr != 0 {
+		} else {
 			return false
-		}
-		if incr == 0 {
-			incr = tmp
 		}
 	}
 	return true

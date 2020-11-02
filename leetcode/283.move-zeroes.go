@@ -7,50 +7,27 @@ package leetcode
  */
 
 // @lc code=start
-// func moveZeroes(nums []int) {
-// 	if len(nums) == 0 {
-// 		return
-// 	}
-
-// 	first := 0
-// 	for first < len(nums) {
-// 		if nums[first] == 0 {
-// 			break
-// 		}
-// 		first++
-// 	}
-
-// 	second := first
-// 	for second < len(nums) {
-// 		if nums[second] != 0 {
-// 			nums[first] = nums[second]
-// 			nums[second] = 0
-// 			first++
-// 		}
-// 		second++
-// 	}
-// }
-
 func moveZeroes(nums []int) {
-	if len(nums) == 0 {
+	if len(nums) < 2 {
 		return
 	}
-	// set first to zero
+	// first index with zero
 	first := 0
-	for first < len(nums) {
-		if nums[first] == 0 {
-			break
-		}
+	for first < len(nums) && nums[first] != 0 {
 		first++
 	}
-	second := first + 1
+	second := first
 	for second < len(nums) {
 		if nums[second] != 0 {
 			nums[first] = nums[second]
-			nums[second] = 0
 			first++
 		}
 		second++
+	}
+	// reset first + to zero
+	for first < len(nums) {
+		nums[first] = 0
+		first++
 	}
 }
 

@@ -21,13 +21,12 @@ func addDigitsLoops(num int) int {
 		return num
 	}
 	target := 0
-
 	for num >= 10 {
 		target = target + num%10
 		num = num / 10
 	}
-
-	return addDigitsLoops(target + num)
+	target = target + num
+	return addDigits(target)
 }
 
 func addDigitsO1(num int) int {

@@ -17,33 +17,14 @@ package leetcode
  */
 
 func inorderTraversal(root *TreeNode) []int {
-	result := []int{}
 	if root == nil {
-		return result
+		return []int{}
 	}
-	stack := []*TreeNode{}
-	// handle root left node
-	current := root
-	for current != nil {
-		stack = append(stack, current)
-		current = current.Left
-	}
-
-	for len(stack) > 0 {
-		// pop last element
-		lastElment := stack[len(stack)-1]
-		// handle root
-		result = append(result, lastElment.Val)
-		stack = stack[:len(stack)-1]
-		// handle right sub tree
-		current = lastElment.Right
-		for current != nil {
-			stack = append(stack, current)
-			current = current.Left
-		}
-	}
-
-	return result
+	left := inorderTraversal(root.Left)
+	// handle current process
+	current := append(left, root.Val)
+	right := inorderTraversal(root.Right)
+	return append(current, right...)
 }
 
 // @lc code=end
