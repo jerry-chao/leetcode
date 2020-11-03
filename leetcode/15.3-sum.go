@@ -5,10 +5,7 @@
  */
 package leetcode
 
-import (
-	"fmt"
-	"sort"
-)
+import "sort"
 
 // @lc code=start
 func ThreeSum(nums []int) [][]int {
@@ -20,55 +17,42 @@ func threeSum(nums []int) [][]int {
 	if n == 0 {
 		return result
 	}
+	// sort the input
 	sort.Ints(nums)
-	i := 0
-	for i < n {
-		target := -nums[i]
+	for i := 0; i < len(nums)-2; {
 		j := i + 1
-		k := n - 1
-		fmt.Println(j, k)
+		k := len(nums) - 1
 		for j < k {
-			if nums[j]+nums[k] == target {
+			if nums[j]+nums[k]+nums[i] == 0 {
 				result = append(result, []int{nums[i], nums[j], nums[k]})
-				j++
-				for j < k {
-					if nums[j] != nums[j-1] {
-						break
-					}
+				// skip j = j +1
+				for j < len(nums)-1 && j < k && nums[j] == nums[j+1] {
 					j++
 				}
-				k--
-				for j < k {
-					if nums[k] != nums[k+1] {
-						break
-					}
+				j++
+				// skip k = k -1
+				for j < k && nums[k] == nums[k-1] {
 					k--
 				}
-			} else if nums[j]+nums[k] > target {
 				k--
-				for j < k {
-					if nums[k] != nums[k+1] {
-						break
-					}
+			} else if nums[j]+nums[k]+nums[i] > 0 {
+				// skip k = k -1
+				for j < k && nums[k] == nums[k-1] {
 					k--
 				}
+				k--
 			} else {
-				j++
-				for j < k {
-					if nums[j] != nums[j-1] {
-						break
-					}
+				for j < len(nums)-1 && j < k && nums[j] == nums[j+1] {
 					j++
 				}
+				j++
 			}
 		}
-		i++
-		for i < n-1 {
-			if nums[i] != nums[i-1] {
-				break
-			}
+		// skip equal i
+		for i < len(nums)-2 && nums[i] == nums[i+1] {
 			i++
 		}
+		i++
 	}
 	return result
 }

@@ -10,8 +10,8 @@ package leetcode
 func removeOuterParentheses(S string) string {
 	result := ""
 	leftNum := 0
-	for _, str := range S {
-		if string(str) == "(" {
+	for i := 0; i < len(S); i++ {
+		if string(S[i]) == "(" {
 			if leftNum != 0 {
 				result = result + "("
 			}

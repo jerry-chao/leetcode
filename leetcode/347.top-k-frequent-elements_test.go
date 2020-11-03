@@ -22,7 +22,7 @@ func Test_topKFrequent(t *testing.T) {
 				nums: []int{1, 1, 1, 2, 2, 3},
 				k:    2,
 			},
-			want: []int{1, 2},
+			want: []int{2, 1},
 		},
 		{
 			name: "2",

@@ -22,11 +22,11 @@ func maxDepth(root *TreeNode) int {
 	return 1 + max(maxDepth(root.Left), maxDepth(root.Right))
 }
 
-/* func max(i, j int) int {
-	if i > j {
-		return i
-	}
-	return j
-} */
+// func max(i, j int) int {
+// 	if i > j {
+// 		return i
+// 	}
+// 	return j
+// }
 
 // @lc code=end

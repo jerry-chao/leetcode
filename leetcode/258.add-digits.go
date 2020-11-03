@@ -17,18 +17,21 @@ func addDigits(num int) int {
 }
 
 func addDigitsLoops(num int) int {
+	// terminator
 	if num < 10 {
 		return num
 	}
+	// handle current process
 	target := 0
-	for num >= 10 {
+	for num > 9 {
 		target = target + num%10
 		num = num / 10
 	}
 	target = target + num
-	return addDigits(target)
+	// drill down
+	return addDigitsLoops(target)
+	// reverse
 }
-
 func addDigitsO1(num int) int {
 	return (num-1)%9 + 1
 }

@@ -43,23 +43,18 @@ func rotateReverse(nums []int, k int) {
 	if len(nums) < 2 {
 		return
 	}
-	n := len(nums)
-	k = k % n
+	k = k % len(nums)
 	// reverse all array
-	reverseArray(nums)
 	// reverse first k
-	reverseArray(nums[:k])
-	// reverse last n -k
-	reverseArray(nums[k:])
+	// reverse k-num-1
+	rotateReverseArray(nums)
+	rotateReverseArray(nums[:k])
+	rotateReverseArray(nums[k:])
 }
 
-func reverseArray(nums []int) {
-	i := 0
-	j := len(nums) - 1
-	for i < j {
-		tmp := nums[i]
-		nums[i] = nums[j]
-		nums[j] = tmp
+func rotateReverseArray(nums []int) {
+	for i, j := 0, len(nums)-1; i < j; {
+		nums[i], nums[j] = nums[j], nums[i]
 		i++
 		j--
 	}

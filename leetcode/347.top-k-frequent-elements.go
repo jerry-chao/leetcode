@@ -47,7 +47,6 @@ type Item struct {
 	value    int
 	priority int
 }
-
 type PriorityQueue []*Item
 
 func (pq PriorityQueue) Len() int { return len(pq) }
@@ -69,7 +68,6 @@ func (pq *PriorityQueue) Pop() interface{} {
 	old := *pq
 	n := len(old)
 	item := old[n-1]
-	old[n-1] = nil // avoid memory leak
 	*pq = old[:n-1]
 	return item
 }
