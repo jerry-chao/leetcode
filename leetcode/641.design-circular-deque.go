@@ -15,6 +15,7 @@ type MyCircularDeque struct {
 }
 
 /** Initialize your data structure here. Set the size of the deque to be k. */
+// func ConstructorMyCircularDeque(k int) MyCircularDeque {
 func ConstructorMyCircularDeque(k int) MyCircularDeque {
 	queue := make([]int, k)
 	for i := 0; i < k; i++ {
@@ -31,8 +32,9 @@ func (this *MyCircularDeque) InsertFront(value int) bool {
 	if this.IsFull() {
 		return false
 	}
-	this.FrontIndex = (this.FrontIndex - 1 + this.Capacity) % this.Capacity
-	this.Queue[this.FrontIndex] = value
+	frontIndex := (this.FrontIndex - 1 + this.Capacity) % this.Capacity
+	this.Queue[frontIndex] = value
+	this.FrontIndex = frontIndex
 	this.Count++
 	return true
 }
@@ -42,7 +44,8 @@ func (this *MyCircularDeque) InsertLast(value int) bool {
 	if this.IsFull() {
 		return false
 	}
-	this.Queue[(this.FrontIndex+this.Count)%this.Capacity] = value
+	lastIndex := (this.FrontIndex + this.Count) % this.Capacity
+	this.Queue[lastIndex] = value
 	this.Count++
 	return true
 }
@@ -70,6 +73,9 @@ func (this *MyCircularDeque) DeleteLast() bool {
 
 /** Get the front item from the deque. */
 func (this *MyCircularDeque) GetFront() int {
+	if this.IsEmpty() {
+		return -1
+	}
 	return this.Queue[this.FrontIndex]
 }
 

@@ -14,9 +14,8 @@ import (
 func rotateString(A string, B string) bool {
 	if len(A) == len(B) {
 		return strings.Contains(A+A, B)
-	} else {
-		return false
 	}
+	return false
 }
 
 // @lc code=end

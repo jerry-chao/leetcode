@@ -21,10 +21,9 @@ func inorderTraversal(root *TreeNode) []int {
 		return []int{}
 	}
 	left := inorderTraversal(root.Left)
-	// handle current process
-	current := append(left, root.Val)
+	result := append(left, root.Val)
 	right := inorderTraversal(root.Right)
-	return append(current, right...)
+	return append(result, right...)
 }
 
 // @lc code=end

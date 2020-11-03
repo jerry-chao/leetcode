@@ -16,14 +16,15 @@ func intersect(nums1 []int, nums2 []int) []int {
 	for _, num1 := range nums1 {
 		hash[num1]++
 	}
-
-	for _, num2 := range nums2 {
-		had, ok := hash[num2]
-		if ok && had > 0 {
-			result = append(result, num2)
-			hash[num2]--
+	for i := 0; i < len(nums2); i++ {
+		if had, ok := hash[nums2[i]]; ok {
+			if had > 0 {
+				result = append(result, nums2[i])
+				hash[nums2[i]]--
+			}
 		}
 	}
+
 	return result
 }
 
