@@ -12,13 +12,16 @@ func isAnagram(s string, t string) bool {
 		return false
 	}
 	hash := map[string]int{}
-	for _, schar := range s {
-		hash[string(schar)]++
+	for i := 0; i < len(s); i++ {
+		hash[string(s[i])]++
 	}
-	for _, tchar := range t {
-		had, ok := hash[string(tchar)]
-		if ok && had > 0 {
-			hash[string(tchar)]--
+	for i := 0; i < len(t); i++ {
+		if had, ok := hash[string(t[i])]; ok {
+			if had > 0 {
+				hash[string(t[i])]--
+			} else {
+				return false
+			}
 		} else {
 			return false
 		}

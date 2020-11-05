@@ -22,7 +22,6 @@ package leetcode
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	hair := &ListNode{Next: head}
-	// the last node of reversed link list
 	pre := hair
 	for head != nil {
 		tail := pre
@@ -32,21 +31,21 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 				return hair.Next
 			}
 		}
-		// store tail.Next
 		tmp := tail.Next
 		head, tail = myReverse(head, tail)
 		pre.Next = head
-		pre = tail
+		tail.Next = tmp
 		head = tmp
+		pre = tail
 	}
 	return hair.Next
 }
 
 func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
-	// store pre head linked list
 	pre := tail.Next
+	end := tail.Next
 	current := head
-	for pre != tail {
+	for current != end {
 		tmp := current.Next
 		current.Next = pre
 		pre = current

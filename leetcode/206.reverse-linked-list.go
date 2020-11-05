@@ -14,29 +14,16 @@ package leetcode
  *     Next *ListNode
  * }
  */
-// func reverseList(head *ListNode) *ListNode {
-// 	if head == nil || head.Next == nil {
-// 		return head
-// 	}
-// 	p := reverseList(head.Next)
-// 	head.Next.Next = head
-// 	head.Next = nil
-// 	return p
-// }
-
 func reverseList(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
-
-	// targeted linked list head
 	var pre *ListNode
-	current := head
-	for current != nil {
-		tmp := current.Next
-		current.Next = pre
-		pre = current
-		current = tmp
+	for head != nil {
+		tmp := head.Next
+		head.Next = pre
+		pre = head
+		head = tmp
 	}
 	return pre
 }
