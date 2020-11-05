@@ -12,22 +12,29 @@ func MaxArea(height []int) int {
 }
 
 func maxArea(height []int) int {
-
-	maxArea := 0
 	if len(height) < 2 {
-		return maxArea
+		return 0
 	}
-	i, j := 0, len(height)-1
-	for i < j {
-		if height[i] > height[j] {
-			maxArea = max(maxArea, height[j]*(j-i))
-			j--
+	maxArea := 0
+	left := 0
+	right := len(height) - 1
+	for left < right {
+		if height[left] > height[right] {
+			maxArea = max(maxArea, (right-left)*height[right])
+			right--
 		} else {
-			maxArea = max(maxArea, height[i]*(j-i))
-			i++
+			maxArea = max(maxArea, (right-left)*height[left])
+			left++
 		}
 	}
 	return maxArea
 }
+
+// func max(i, j int) int {
+// 	if i > j {
+// 		return i
+// 	}
+// 	return j
+// }
 
 // @lc code=end

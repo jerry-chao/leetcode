@@ -12,17 +12,21 @@ func isValid(s string) bool {
 		return false
 	}
 	stack := []string{}
-	for i := 0; i < len(s); i++ {
-		char := string(s[i])
-		if isLeft(char) {
-			stack = append(stack, transferValidParentheses(char))
-			continue
-		}
-
-		if len(stack) > 0 && char == stack[len(stack)-1] {
-			stack = stack[:len(stack)-1]
+	for _, schar := range s {
+		str := transferParentheses(string(schar))
+		if str != "" {
+			stack = append(stack, str)
 		} else {
-			return false
+			if len(stack) > 0 {
+				// pop first elment
+				if stack[len(stack)-1] == string(schar) {
+					stack = stack[:len(stack)-1]
+				} else {
+					return false
+				}
+			} else {
+				return false
+			}
 		}
 	}
 	if len(stack) == 0 {
@@ -31,21 +35,17 @@ func isValid(s string) bool {
 	return false
 }
 
-func isLeft(char string) bool {
-	if char == "{" || char == "[" || char == "(" {
-		return true
+func transferParentheses(str string) string {
+	hash := map[string]string{
+		"(": ")",
+		"[": "]",
+		"{": "}",
 	}
-	return false
-}
+	if had, ok := hash[str]; ok {
+		return had
+	}
+	return ""
 
-func transferValidParentheses(char string) string {
-	if char == "{" {
-		return "}"
-	} else if char == "(" {
-		return ")"
-	} else {
-		return "]"
-	}
 }
 
 // @lc code=end
