@@ -7,6 +7,11 @@ type ListNode struct {
 	Next *ListNode
 }
 
+type Node struct {
+	Val      int
+	Children []*Node
+}
+
 // PrintArray
 func PrintArray(arr []int) {
 	for i := 0; i < len(arr); i++ {
