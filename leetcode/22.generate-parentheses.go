@@ -8,7 +8,7 @@ package leetcode
 
 // @lc code=start
 func generateParenthesis(n int) []string {
-
+	return []string{}
 }
 
 // @lc code=end
