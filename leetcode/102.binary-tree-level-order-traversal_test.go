@@ -6,6 +6,7 @@ import (
 )
 
 func Test_levelOrder(t *testing.T) {
+<<<<<<< HEAD
 	type args struct {
 		root *TreeNode
 	}
@@ -14,6 +15,17 @@ func Test_levelOrder(t *testing.T) {
 	Node9 := &TreeNode{Val: 9}
 	Node20 := &TreeNode{Val: 20, Left: Node15, Right: Node7}
 	Node3 := &TreeNode{Val: 3, Left: Node9, Right: Node20}
+=======
+	Node7 := &TreeNode{Val: 7}
+	Node15 := &TreeNode{Val: 15}
+	Node20 := &TreeNode{Val: 20, Left: Node15, Right: Node7}
+	Node9 := &TreeNode{Val: 9}
+	Node3 := &TreeNode{Val: 3, Left: Node9, Right: Node20}
+	type args struct {
+		root *TreeNode
+	}
+
+>>>>>>> modify leetcode to project
 	tests := []struct {
 		name string
 		args args

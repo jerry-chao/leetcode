@@ -28,6 +28,18 @@ func Test_generateParenthesis(t *testing.T) {
 				"()()()",
 			},
 		},
+<<<<<<< HEAD
+=======
+		{
+			name: "2",
+			args: args{
+				n: 1,
+			},
+			want: []string{
+				"()",
+			},
+		},
+>>>>>>> modify leetcode to project
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

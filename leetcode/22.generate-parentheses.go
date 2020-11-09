@@ -11,6 +11,7 @@ func generateParenthesis(n int) []string {
 	if n < 1 {
 		return []string{}
 	}
+<<<<<<< HEAD
 	visGenerateParenthesis = map[string]bool{}
 	resultGenerateParenthesis = []string{}
 	dfsGenerateParenthesis("", 0, 0, 3)
@@ -33,6 +34,25 @@ func dfsGenerateParenthesis(str string, left, right, max int) {
 	}
 	if right < left {
 		dfsGenerateParenthesis(str+")", left, right+1, max)
+=======
+	result = []string{}
+	generateParenthesisLocal(n, 0, 0, "")
+	return result
+}
+
+var result []string
+
+func generateParenthesisLocal(n, left, right int, str string) {
+	if left == n && right == n {
+		result = append(result, str)
+		return
+	}
+	if left < n {
+		generateParenthesisLocal(n, left+1, right, str+"(")
+	}
+	if right < left {
+		generateParenthesisLocal(n, left, right+1, str+")")
+>>>>>>> modify leetcode to project
 	}
 }
 
