@@ -1,9 +1,10 @@
+package leetcode
+
 /*
  * @lc app=leetcode id=15 lang=golang
  *
  * [15] 3Sum
  */
-package leetcode
 
 import "sort"
 

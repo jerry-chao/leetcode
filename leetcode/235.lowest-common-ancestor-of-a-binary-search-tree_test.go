@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_lowestCommonAncestor(t *testing.T) {
+func Test_lowestCommonAncestorBinaryTree(t *testing.T) {
 	type args struct {
 		root *TreeNode
 		p    *TreeNode

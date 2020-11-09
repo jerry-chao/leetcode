@@ -16,15 +16,15 @@ package leetcode
  * }
  */
 
-func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+func lowestCommonAncestorBinaryTree(root, p, q *TreeNode) *TreeNode {
 	// terminator
 	if root == nil || root.Val == p.Val || root.Val == q.Val {
 		return root
 	}
 	// handle current process
 	// drill down
-	left := lowestCommonAncestor(root.Left, p, q)
-	right := lowestCommonAncestor(root.Right, p, q)
+	left := lowestCommonAncestorBinaryTree(root.Left, p, q)
+	right := lowestCommonAncestorBinaryTree(root.Right, p, q)
 	if left != nil && right != nil {
 		return root
 	}
