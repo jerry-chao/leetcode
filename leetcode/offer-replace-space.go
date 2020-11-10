@@ -1,13 +1,17 @@
 package leetcode
 
 func replaceSpace(s string) string {
-	result := ""
-	for i := 0; i < len(s); i++ {
-		if string(s[i]) == " " {
-			result = result + "%20"
+	return replaceSpaceRec(s, "")
+}
+
+func replaceSpaceRec(s string, t string) string {
+	if len(s) > 0 {
+		if string(s[0]) == " " {
+			t = t + "%20"
 		} else {
-			result = result + string(s[i])
+			t = t + string(s[0])
 		}
+		return replaceSpaceRec(s[1:], t)
 	}
-	return result
+	return t
 }

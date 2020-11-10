@@ -10,35 +10,47 @@ import "strconv"
 
 // @lc code=start
 
-type FizzMap struct {
-	Val int
-	Str string
+func fizzBuzz(n int) []string {
+	return fizzBuzzRec(1, n, []string{})
 }
+func fizzBuzzRec(n, max int, result []string) []string {
+	// terminator
+	if n > max {
+		return result
+	}
+	// current process
+	result = append(result, int2Str(n))
+
+	// drill down
+	return fizzBuzzRec(n+1, max, result)
 
 var hash []FizzMap = []FizzMap{
 	{Val: 3, Str: "Fizz"},
 	{Val: 5, Str: "Buzz"},
 }
 
-func fizzBuzz(n int) []string {
-	result := []string{}
-	for i := 1; i <= n; i++ {
-		result = append(result, fizzBuzzString(i))
-	}
-	return result
+type Fizz struct {
+	Val int
+	Str string
 }
 
-func fizzBuzzString(n int) string {
+func int2Str(n int) string {
+	// map is not ordered
+	hash := []Fizz{
+		Fizz{Val: 3, Str: "Fizz"},
+		Fizz{Val: 5, Str: "Buzz"},
+	}
 	result := ""
-	for _, value := range hash {
-		if n%value.Val == 0 {
-			result = result + value.Str
+	for _, fizz := range hash {
+		if n%fizz.Val == 0 {
+			result = result + fizz.Str
 		}
 	}
 	if result == "" {
-		result = strconv.Itoa(n)
+		return strconv.Itoa(n)
+	} else {
+		return result
 	}
-	return result
 }
 
 // @lc code=end

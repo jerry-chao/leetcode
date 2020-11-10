@@ -75,12 +75,11 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if root == nil {
 		return nil
 	}
+
 	if root.Val == p.Val || root.Val == q.Val {
 		return root
 	}
-	// current process
-
-	// drill down
+	// handle current process
 	left := lowestCommonAncestor(root.Left, p, q)
 	right := lowestCommonAncestor(root.Right, p, q)
 	if left != nil && right != nil {
@@ -90,6 +89,8 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 		return left
 	}
 	return right
+	// drill down
+	// reverse
 }
 
 // @lc code=end

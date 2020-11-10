@@ -70,13 +70,14 @@ func preorder(root *Node) []int {
 	if root == nil {
 		return []int{}
 	}
-	// current process
+	// handle current process
 	result := []int{root.Val}
-	for _, node := range root.Children {
-		result = append(result, preorder(node)...)
-	}
 	// drill down
+	for _, child := range root.Children {
+		result = append(result, preorder(child)...)
+	}
 	// reverse
+
 	return result
 }
 
