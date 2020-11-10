@@ -16,8 +16,8 @@ type FizzMap struct {
 }
 
 var hash []FizzMap = []FizzMap{
-	FizzMap{Val: 3, Str: "Fizz"},
-	FizzMap{Val: 5, Str: "Buzz"},
+	{Val: 3, Str: "Fizz"},
+	{Val: 5, Str: "Buzz"},
 }
 
 func fizzBuzz(n int) []string {
