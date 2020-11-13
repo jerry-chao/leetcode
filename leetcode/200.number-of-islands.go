@@ -1,10 +1,5 @@
 package leetcode
 
-import (
-	"log"
-	"strconv"
-)
-
 /*
  * @lc app=leetcode id=200 lang=golang
  *
@@ -66,48 +61,30 @@ import (
 
 // @lc code=start
 func numIslands(grid [][]byte) int {
-	nr := len(grid)
-	if nr == 0 {
-		return 0
-	}
-	nc := len(grid[0])
-	if nc == 0 {
-		return 0
-	}
 	result := 0
-	visited = make(map[string]int)
-	for i := 0; i < nr; i++ {
-		for j := 0; j < nc; j++ {
-			// if grid is land
-			if grid[i][j] == '1' {
+	nc := len(grid)
+	nr := len(grid[0])
+	for c := 0; c < nc; c++ {
+		for r := 0; r < nr; r++ {
+			if grid[c][r] == '1' {
 				result++
-				// remove island to 0
-				grid[i][j] = 0
-				dfsIslands(grid, nr, nc, i, j)
+				grid[c][r] = '0'
+				removeOneFromGrid(grid, c, r, nc, nr)
 			}
 		}
 	}
 	return result
 }
 
-type direction struct {
-	dr int
-	dc int
-}
-
-var visited map[string]int
-
-func dfsIslands(grid [][]byte, m, n, r, c int) {
-	direction := []direction{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}
-
-	for i := 0; i < len(direction); i++ {
-		dr := direction[i].dr + r
-		dc := direction[i].dc + c
-		if dr >= 0 && dr < m && dc >= 0 && dc < n && grid[dr][dc] == '1' {
-			if _, ok := visited[strconv.Itoa(dr)+strconv.Itoa(dc)]; !ok {
-				grid[dr][dc] = '0'
-				log.Println(dr, dc)
-				dfsIslands(grid, m, n, dr, dc)
+func removeOneFromGrid(grid [][]byte, c, r, nc, nr int) {
+	direction := [][]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}
+	for _, dr := range direction {
+		cNext := c + dr[0]
+		rNext := r + dr[1]
+		if cNext >= 0 && rNext >= 0 && cNext < nc && rNext < nr {
+			if grid[cNext][rNext] == '1' {
+				grid[cNext][rNext] = '0'
+				removeOneFromGrid(grid, cNext, rNext, nc, nr)
 			}
 		}
 	}
