@@ -7,23 +7,22 @@ package leetcode
  */
 
 // @lc code=start
-var ans [][]int
+var result [][]int
 
 func permute(a []int) [][]int {
-	ans = make([][]int, 0)
-	perm(a, 0)
-	return ans
+	result = [][]int{}
+	permuteLocal(a, 0)
+	return result
 }
 
-func perm(a []int, i int) {
-	if i == len(a) {
-		ans = append(ans, append(make([]int, 0), a...))
-		return
+func permuteLocal(a []int, index int) {
+	if len(a) == index {
+		result = append(result, append([]int{}, a...))
 	}
-	for j := i; j < len(a); j++ {
-		a[i], a[j] = a[j], a[i]
-		perm(a, i+1)
-		a[i], a[j] = a[j], a[i]
+	for i := index; i < len(a); i++ {
+		a[index], a[i] = a[i], a[index]
+		permuteLocal(a, index+1)
+		a[i], a[index] = a[index], a[i]
 	}
 }
 

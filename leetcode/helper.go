@@ -32,3 +32,10 @@ func max(i, j int) int {
 	}
 	return j
 }
+
+func min(i, j int) int {
+	if i > j {
+		return j
+	}
+	return i
+}

@@ -23,10 +23,6 @@ func fizzBuzzRec(n, max int, result []string) []string {
 
 	// drill down
 	return fizzBuzzRec(n+1, max, result)
-
-var hash []FizzMap = []FizzMap{
-	{Val: 3, Str: "Fizz"},
-	{Val: 5, Str: "Buzz"},
 }
 
 type Fizz struct {

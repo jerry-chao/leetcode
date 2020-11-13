@@ -18,10 +18,12 @@ package leetcode
 
 func inorderTraversal(root *TreeNode) []int {
 	if root == nil {
-		return []int{}
+		return nil
 	}
+	// left
 	left := inorderTraversal(root.Left)
 	result := append(left, root.Val)
+	// right
 	right := inorderTraversal(root.Right)
 	return append(result, right...)
 }
