@@ -7,21 +7,23 @@ package leetcode
  */
 
 // @lc code=start
-var result [][]int
+var resultPermute [][]int
 
 func permute(a []int) [][]int {
-	result = [][]int{}
-	permuteLocal(a, 0)
-	return result
+	resultPermute = [][]int{}
+	permuteBacktrace(a, 0)
+	return resultPermute
 }
 
-func permuteLocal(a []int, index int) {
+func permuteBacktrace(a []int, index int) {
 	if len(a) == index {
-		result = append(result, append([]int{}, a...))
+		// golang share array, so must copy
+		resultPermute = append(resultPermute, append([]int{}, a...))
+		return
 	}
 	for i := index; i < len(a); i++ {
-		a[index], a[i] = a[i], a[index]
-		permuteLocal(a, index+1)
+		a[i], a[index] = a[index], a[i]
+		permuteBacktrace(a, index+1)
 		a[i], a[index] = a[index], a[i]
 	}
 }

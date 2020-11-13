@@ -8,15 +8,16 @@ package leetcode
  * }
  */
 func reversePrint(head *ListNode) []int {
-	return reversePrintRec(head, []int{})
-}
-func reversePrintRec(head *ListNode, result []int) []int {
-	// terminator
-	if head == nil {
-		return result
+	result := []int{}
+	for head != nil {
+		result = append(result, head.Val)
+		head = head.Next
 	}
-	// current
-	result = append([]int{head.Val}, result...)
-	// drill down
-	return reversePrintRec(head.Next, result)
+	// reverse array
+	for i, j := 0, len(result)-1; i < j; {
+		result[i], result[j] = result[j], result[i]
+		i++
+		j--
+	}
+	return result
 }

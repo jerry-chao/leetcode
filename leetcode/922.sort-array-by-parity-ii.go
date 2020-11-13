@@ -51,13 +51,18 @@ package leetcode
 
 // @lc code=start
 func sortArrayByParityII(a []int) []int {
-	for i, j := 0, 1; i < len(a); i += 2 {
-		if a[i]%2 == 1 {
-			for a[j]%2 == 1 {
-				j += 2
+	odd := 0
+	even := 1
+	for odd < len(a) {
+		if a[odd]%2 == 1 {
+			// find first even not in right place
+			for a[even]%2 == 1 {
+				even = even + 2
 			}
-			a[i], a[j] = a[j], a[i]
+			// swap even and odd
+			a[odd], a[even] = a[even], a[odd]
 		}
+		odd = odd + 2
 	}
 	return a
 }

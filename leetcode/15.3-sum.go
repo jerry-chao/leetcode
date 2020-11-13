@@ -1,59 +1,54 @@
 package leetcode
 
+import (
+	"sort"
+)
+
 /*
  * @lc app=leetcode id=15 lang=golang
  *
  * [15] 3Sum
  */
 
-import "sort"
-
 // @lc code=start
 func ThreeSum(nums []int) [][]int {
 	return threeSum(nums)
 }
 func threeSum(nums []int) [][]int {
-	result := [][]int{}
-	n := len(nums)
-	if n == 0 {
-		return result
+	if len(nums) < 3 {
+		return [][]int{}
 	}
-	// sort the input
+	result := [][]int{}
 	sort.Ints(nums)
-	for i := 0; i < len(nums)-2; {
-		j := i + 1
-		k := len(nums) - 1
-		for j < k {
-			if nums[j]+nums[k]+nums[i] == 0 {
+	for i := 0; i < len(nums); {
+		for j, k := i+1, len(nums)-1; j < k; {
+
+			if nums[i]+nums[j]+nums[k] == 0 {
 				result = append(result, []int{nums[i], nums[j], nums[k]})
-				// skip j = j +1
-				for j < len(nums)-1 && j < k && nums[j] == nums[j+1] {
-					j++
+				k--
+				for j < k && nums[k] == nums[k+1] {
+					k--
 				}
 				j++
-				// skip k = k -1
-				for j < k && nums[k] == nums[k-1] {
+				for j < k && nums[j] == nums[j-1] {
+					j++
+				}
+			} else if nums[i]+nums[j]+nums[k] > 0 {
+				k--
+				for j < k && nums[k] == nums[k+1] {
 					k--
 				}
-				k--
-			} else if nums[j]+nums[k]+nums[i] > 0 {
-				// skip k = k -1
-				for j < k && nums[k] == nums[k-1] {
-					k--
-				}
-				k--
 			} else {
-				for j < len(nums)-1 && j < k && nums[j] == nums[j+1] {
+				j++
+				for j < k && nums[j] == nums[j-1] {
 					j++
 				}
-				j++
 			}
 		}
-		// skip equal i
-		for i < len(nums)-2 && nums[i] == nums[i+1] {
+		i++
+		for i < len(nums) && nums[i] == nums[i-1] {
 			i++
 		}
-		i++
 	}
 	return result
 }

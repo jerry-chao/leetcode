@@ -66,18 +66,14 @@ package leetcode
  */
 
 func preorder(root *Node) []int {
-	// terminator
+	result := []int{}
 	if root == nil {
-		return []int{}
+		return result
 	}
-	// handle current process
-	result := []int{root.Val}
-	// drill down
-	for _, child := range root.Children {
-		result = append(result, preorder(child)...)
+	result = append(result, root.Val)
+	for i := 0; i < len(root.Children); i++ {
+		result = append(result, preorder(root.Children[i])...)
 	}
-	// reverse
-
 	return result
 }
 

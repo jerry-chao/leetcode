@@ -33,8 +33,8 @@ type Fizz struct {
 func int2Str(n int) string {
 	// map is not ordered
 	hash := []Fizz{
-		Fizz{Val: 3, Str: "Fizz"},
-		Fizz{Val: 5, Str: "Buzz"},
+		{Val: 3, Str: "Fizz"},
+		{Val: 5, Str: "Buzz"},
 	}
 	result := ""
 	for _, fizz := range hash {

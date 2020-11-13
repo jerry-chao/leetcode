@@ -103,9 +103,9 @@ func lemonadeChange(bills []int) bool {
 			five--
 			ten++
 		} else {
-			if ten > 0 && five > 0 {
-				ten--
+			if five > 0 && ten > 0 {
 				five--
+				ten--
 			} else if five > 2 {
 				five = five - 3
 			} else {
