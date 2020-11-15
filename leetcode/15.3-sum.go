@@ -11,6 +11,8 @@ import (
  */
 
 // @lc code=start
+
+// ThreeSum caculate three num equal zero
 func ThreeSum(nums []int) [][]int {
 	return threeSum(nums)
 }

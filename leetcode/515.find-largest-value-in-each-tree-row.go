@@ -11,36 +11,42 @@ package leetcode
 
 //  */
 
-var maxLargestValues map[int]int
-var visitedLargestValues map[*TreeNode]bool
-
 func largestValues(root *TreeNode) []int {
-	if root == nil {
-		return []int{}
-	}
-	maxLargestValues = map[int]int{}
-	visitedLargestValues = map[*TreeNode]bool{}
-	dfsLargestValues(0, root)
 	result := []int{}
-	for i := 0; i < len(maxLargestValues); i++ {
-		result = append(result, maxLargestValues[i])
+	if root == nil {
+		return result
+	}
+	resultLargestValues = map[int]int{}
+	visLargestValues = map[*TreeNode]bool{}
+	dfsLargestValues(root, 0)
+	// handle resultMap
+	for i := 0; i < len(resultLargestValues); i++ {
+		result = append(result, resultLargestValues[i])
 	}
 	return result
 }
 
-func dfsLargestValues(dep int, node *TreeNode) {
-	if node == nil {
+// dfs
+var resultLargestValues map[int]int
+var visLargestValues map[*TreeNode]bool
+
+func dfsLargestValues(root *TreeNode, dep int) {
+	if root == nil {
 		return
 	}
-	if had, ok := maxLargestValues[dep]; ok {
-		if had < node.Val {
-			maxLargestValues[dep] = node.Val
+	if _, ok := visLargestValues[root]; ok {
+		return
+	}
+	if old, ok := resultLargestValues[dep]; ok {
+		if old < root.Val {
+			resultLargestValues[dep] = root.Val
 		}
 	} else {
-		maxLargestValues[dep] = node.Val
+		resultLargestValues[dep] = root.Val
 	}
-	dfsLargestValues(dep+1, node.Left)
-	dfsLargestValues(dep+1, node.Right)
+	// drill down
+	dfsLargestValues(root.Left, dep+1)
+	dfsLargestValues(root.Right, dep+1)
 }
 
 // @lc code=end

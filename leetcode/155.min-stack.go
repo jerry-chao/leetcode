@@ -7,6 +7,8 @@ package leetcode
  */
 
 // @lc code=start
+
+// MinStack minimue is the first element
 type MinStack struct {
 	Stack []int
 	Min   []int

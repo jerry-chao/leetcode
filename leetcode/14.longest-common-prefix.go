@@ -48,6 +48,8 @@ package leetcode
  */
 
 // @lc code=start
+
+// LongestCommonPrefix with longest common prefix
 func LongestCommonPrefix(strs []string) string {
 	return longestCommonPrefix(strs)
 }

@@ -7,6 +7,8 @@ package leetcode
  */
 
 // @lc code=start
+
+// MaxArea caculate max area of container
 func MaxArea(height []int) int {
 	return maxArea(height)
 }
