@@ -1,9 +1,6 @@
 package leetcode
 
-import (
-	"log"
-	"math"
-)
+import "log"
 
 /*
  * @lc app=leetcode id=433 lang=golang
@@ -13,10 +10,13 @@ import (
 
 // @lc code=start
 func minMutation(start string, end string, bank []string) int {
-	minMuationValue = math.MaxInt64
-	visGenetic = map[string]bool{}
+	minMuationValue = len(bank) + 1
+	visGenetic = make([]bool, len(bank))
 	dfsMinMutation(start, end, bank, 0)
-	return minMuationValue
+	if minMuationValue <= len(bank) {
+		return minMuationValue
+	}
+	return -1
 }
 
 var geneticHash map[string][]string = map[string][]string{
@@ -26,10 +26,12 @@ var geneticHash map[string][]string = map[string][]string{
 	"T": {"A", "C", "G"},
 }
 var minMuationValue int
-var visGenetic map[string]bool
+var visGenetic []bool
 
 func dfsMinMutation(start, end string, bank []string, mutation int) {
-	log.Println(start, end)
+	if mutation >= minMuationValue {
+		return
+	}
 	if start == end {
 		if mutation < minMuationValue {
 			minMuationValue = mutation
@@ -37,25 +39,27 @@ func dfsMinMutation(start, end string, bank []string, mutation int) {
 		return
 	}
 	// divide
+	log.Println("start", start, "end:", end, mutation, minMuationValue)
 	for i := 0; i < len(start); i++ {
 		for _, mutationStr := range geneticHash[string(start[i])] {
 			// change
-			newStart := string(start[:i]) + mutationStr + string(start[i+1:])
-			visGenetic[newStart] = true
-			if !visGenetic[newStart] && isInBank(newStart, bank) {
+			newStart := start[:i] + mutationStr + start[i+1:]
+			if idx := idxInBank(newStart, bank); idx != -1 && !visGenetic[idx] {
+				visGenetic[idx] = true
 				dfsMinMutation(newStart, end, bank, mutation+1)
+				visGenetic[idx] = false
 			}
 		}
 	}
 }
 
-func isInBank(str string, bank []string) bool {
+func idxInBank(str string, bank []string) int {
 	for i := 0; i < len(bank); i++ {
 		if str == bank[i] {
-			return true
+			return i
 		}
 	}
-	return false
+	return -1
 }
 
 // @lc code=end

@@ -11,21 +11,23 @@ var resultPermute [][]int
 
 func permute(a []int) [][]int {
 	resultPermute = [][]int{}
-	permuteBacktrace(a, 0)
+	if len(a) < 1 {
+		return resultPermute
+	}
+	var backTrack func([]int, int)
+	backTrack = func(a []int, index int) {
+		if index == len(a) {
+			resultPermute = append(resultPermute, append([]int{}, a...))
+			return
+		}
+		for i := index; i < len(a); i++ {
+			a[index], a[i] = a[i], a[index]
+			backTrack(a, index+1)
+			a[index], a[i] = a[i], a[index]
+		}
+	}
+	backTrack(a, 0)
 	return resultPermute
-}
-
-func permuteBacktrace(a []int, index int) {
-	if len(a) == index {
-		// golang share array, so must copy
-		resultPermute = append(resultPermute, append([]int{}, a...))
-		return
-	}
-	for i := index; i < len(a); i++ {
-		a[i], a[index] = a[index], a[i]
-		permuteBacktrace(a, index+1)
-		a[i], a[index] = a[index], a[i]
-	}
 }
 
 // @lc code=end

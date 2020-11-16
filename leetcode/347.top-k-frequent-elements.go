@@ -16,27 +16,28 @@ func TopKFrequent(nums []int, k int) []int {
 }
 
 func topKFrequent(nums []int, k int) []int {
-	if len(nums) == 0 {
-		return []int{}
+	result := []int{}
+	if len(nums) < k {
+		return result
 	}
-	hash := map[int]int{}
+	// key freq
+	frequents := map[int]int{}
 	for i := 0; i < len(nums); i++ {
-		hash[nums[i]]++
+		frequents[nums[i]]++
 	}
 	pq := &PriorityQueue{}
 	heap.Init(pq)
-	for key, value := range hash {
-		heap.Push(pq, &Item{
-			value:    key,
-			priority: value,
-		})
+	for fKey, fValue := range frequents {
+		heap.Push(pq,
+			&Item{value: fKey,
+				priority: fValue})
 		if pq.Len() > k {
 			heap.Pop(pq)
 		}
 	}
-	result := []int{}
-	for pq.Len() > 0 {
-		item := pq.Pop().(*Item)
+	// relate result
+	for i := 0; i < k; i++ {
+		item := heap.Pop(pq).(*Item)
 		result = append(result, item.value)
 	}
 	return result

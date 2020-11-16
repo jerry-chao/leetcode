@@ -12,11 +12,11 @@ func Test_getKthMagicNumber(t *testing.T) {
 		want int
 	}{
 		// TODO: Add test cases.
-		// {
-		// 	name: "1",
-		// 	args: args{k: 5},
-		// 	want: 9,
-		// },
+		{
+			name: "1",
+			args: args{k: 5},
+			want: 9,
+		},
 		{
 			name: "2",
 			args: args{k: 7},
