@@ -72,19 +72,19 @@ package leetcode
 
 // @lc code=start
 func findMin(nums []int) int {
-	left, right := 0, len(nums)-1
-	for left < right {
-		if nums[left] < nums[right] {
-			break
+	l, r := 0, len(nums)-1
+	for l < r {
+		if nums[l] < nums[r] {
+			return nums[l]
 		}
-		mid := left + (right-left)>>1
-		if nums[left] <= nums[mid] {
-			left = mid + 1
+		mid := l + (r-l)/2
+		if nums[l] <= nums[mid] {
+			l = mid + 1
 		} else {
-			right = mid
+			r = mid
 		}
 	}
-	return nums[left]
+	return nums[l]
 }
 
 // @lc code=end

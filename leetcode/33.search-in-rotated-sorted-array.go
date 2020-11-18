@@ -1,5 +1,7 @@
 package leetcode
 
+import "log"
+
 /*
  * @lc app=leetcode id=33 lang=golang
  *
@@ -49,28 +51,32 @@ package leetcode
 
 // @lc code=start
 func search(nums []int, target int) int {
-	left, right := 0, len(nums)-1
-	for left <= right {
-		curr := left + (right-left)>>1
-		if nums[curr] == target {
-			return curr
+	l, r := 0, len(nums)-1
+	for l <= r {
+		mid := l + (r-l)/2
+		log.Println(l, r, mid)
+		if nums[mid] == target {
+			return mid
 		}
-		if nums[left] <= nums[curr] {
-			if nums[left] <= target && nums[curr] > target {
-				right = curr - 1
+		if nums[l] <= nums[mid] {
+			if nums[l] == target {
+				return l
+			}
+			if nums[l] > target {
+				l = mid + 1
 			} else {
-				left = curr + 1
+				r = mid - 1
 			}
 		} else {
-			if nums[curr] < target && nums[right] >= target {
-				left = curr + 1
+			if nums[r] == target {
+				return r
+			}
+			if nums[r] > target {
+				l = mid + 1
 			} else {
-				right = curr - 1
+				r = mid - 1
 			}
 		}
-	}
-	if left < len(nums) && nums[left] == target {
-		return left
 	}
 	return -1
 }

@@ -8,22 +8,14 @@ package leetcode
 
 // @lc code=start
 func climbStairs(n int) int {
-	if n == 1 {
-		return 1
+	if n <= 2 {
+		return n
 	}
-	if n == 2 {
-		return 2
+	c1, c2 := 1, 2
+	for i := 3; i <= n; i++ {
+		c1, c2 = c2, c1+c2
 	}
-	first := 1
-	second := 2
-	index := 2
-	for index < n {
-		tmp := second
-		second = first + second
-		first = tmp
-		index++
-	}
-	return second
+	return c2
 }
 
 // @lc code=end

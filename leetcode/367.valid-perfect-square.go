@@ -1,8 +1,6 @@
 package leetcode
 
-import (
-	"math"
-)
+import "math"
 
 /*
  * @lc app=leetcode id=367 lang=golang
@@ -43,8 +41,16 @@ import (
 
 // @lc code=start
 func isPerfectSquare(num int) bool {
-	target := float64(num)
+	sqrt := sqrtSquare(num)
+	if sqrt*sqrt == num {
+		return true
+	}
+	return false
+}
+
+func sqrtSquare(num int) int {
 	curr := float64(1)
+	target := float64(num)
 	for {
 		pre := curr
 		curr = (curr + target/curr) * 0.5
@@ -52,11 +58,7 @@ func isPerfectSquare(num int) bool {
 			break
 		}
 	}
-	result := int(curr)
-	if result*result == num {
-		return true
-	}
-	return false
+	return int(curr)
 }
 
 // @lc code=end

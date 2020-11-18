@@ -16,14 +16,17 @@ func searchMatrix(matrix [][]int, target int) bool {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return false
 	}
+
 	rn := len(matrix)
 	cn := len(matrix[0])
+
 	l, r := 0, rn*cn-1
-	for l < r {
+	for l <= r {
 		mid := l + (r-l)/2
 		if matrix[mid/cn][mid%cn] == target {
 			return true
-		} else if matrix[mid/cn][mid%cn] < target {
+		}
+		if matrix[mid/cn][mid%cn] <= target {
 			l = mid + 1
 		} else {
 			r = mid - 1
