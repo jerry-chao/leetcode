@@ -37,7 +37,29 @@ package leetcode
 
 // @lc code=start
 func maxProduct(nums []int) int {
-	return 0
+	minValue, maxValue, ans := nums[0], nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		tmpMax, tmpMin := maxValue, minValue
+		maxValue = max(max(tmpMax*nums[i], tmpMin*nums[i]), nums[i])
+		minValue = min(min(tmpMax*nums[i], tmpMin*nums[i]), nums[i])
+		ans = max(maxValue, ans)
+	}
+
+	return ans
 }
+
+// func max(i, j int) int {
+// 	if i > j {
+// 		return i
+// 	}
+// 	return j
+// }
+
+// func min(i, j int) int {
+// 	if i > j {
+// 		return j
+// 	}
+// 	return i
+// }
 
 // @lc code=end
