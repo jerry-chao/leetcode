@@ -59,6 +59,36 @@ func Test_searchMatrix(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "5",
+			args: args{
+				matrix: [][]int{
+					{1},
+				},
+				target: 1,
+			},
+			want: true,
+		},
+		{
+			name: "6",
+			args: args{
+				matrix: [][]int{
+					{1, 1},
+				},
+				target: 2,
+			},
+			want: false,
+		},
+		{
+			name: "7",
+			args: args{
+				matrix: [][]int{
+					{1, 3},
+				},
+				target: 2,
+			},
+			want: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -11,19 +11,17 @@ var resultPermute [][]int
 
 func permute(a []int) [][]int {
 	resultPermute = [][]int{}
-	if len(a) < 1 {
-		return resultPermute
-	}
 	var backTrack func([]int, int)
-	backTrack = func(a []int, index int) {
-		if index == len(a) {
-			resultPermute = append(resultPermute, append([]int{}, a...))
+	backTrack = func(nums []int, index int) {
+		if index == len(nums) {
+			resultPermute = append(resultPermute, append([]int{}, nums...))
 			return
 		}
-		for i := index; i < len(a); i++ {
-			a[index], a[i] = a[i], a[index]
-			backTrack(a, index+1)
-			a[index], a[i] = a[i], a[index]
+		for i := index; i < len(nums); i++ {
+			// swap
+			nums[i], nums[index] = nums[index], nums[i]
+			backTrack(nums, index+1)
+			nums[i], nums[index] = nums[index], nums[i]
 		}
 	}
 	backTrack(a, 0)

@@ -6,48 +6,33 @@
 
 package leetcode
 
-import "fmt"
-
 // @lc code=start
+
+// SearchMatrix search matrix value
 func SearchMatrix(matrix [][]int, target int) bool {
 	return searchMatrix(matrix, target)
 }
 func searchMatrix(matrix [][]int, target int) bool {
-	if len(matrix) == 0 {
+	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return false
 	}
-
-	for i := 0; i < len(matrix); i++ {
-		if len(matrix[i]) == 0 {
-			return false
-		}
-		if matrix[i][0] > target {
-			return false
-		} else if matrix[i][len(matrix[i])-1] >= target {
-			return searchTarget(matrix[i], target)
-		} else {
-			continue
-		}
-	}
-
-	return false
-}
-
-func searchTarget(nums []int, target int) bool {
-	start := 0
-	end := len(nums)
-	fmt.Println("targetArrayLen:", len(nums), nums[0])
-	for start <= end {
-		mid := (start + end) / 2
-		if nums[mid] == target {
+	rn := len(matrix)
+	cn := len(matrix[0])
+	l, r := 0, rn*cn-1
+	for l < r {
+		mid := l + (r-l)/2
+		if matrix[mid/cn][mid%cn] == target {
 			return true
-		} else if nums[mid] < target {
-			start = mid + 1
+		} else if matrix[mid/cn][mid%cn] < target {
+			l = mid + 1
 		} else {
-			end = mid - 1
+			r = mid - 1
 		}
 	}
-	return false
+	if l >= rn*cn || matrix[l/cn][l%cn] != target {
+		return false
+	}
+	return true
 }
 
 // @lc code=end
