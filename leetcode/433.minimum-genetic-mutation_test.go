@@ -19,68 +19,30 @@ func Test_minMutation(t *testing.T) {
 			args: args{
 				start: "AACCGGTT",
 				end:   "AACCGGTA",
-<<<<<<< HEAD
-				bank: []string{
-					"AACCGGTA",
-				},
-			},
-			want: 1,
-		},
-=======
 				bank:  []string{"AACCGGTA"},
 			},
 			want: 1,
 		},
 
->>>>>>> modify leetcode to project
 		{
 			name: "2",
 			args: args{
 				start: "AACCGGTT",
 				end:   "AAACGGTA",
-<<<<<<< HEAD
-				bank: []string{
-					"AACCGGTA", "AACCGCTA", "AAACGGTA",
-				},
-			},
-			want: 2,
-		},
-=======
 				bank:  []string{"AACCGGTA", "AACCGCTA", "AAACGGTA"},
 			},
 			want: 2,
 		},
 
->>>>>>> modify leetcode to project
 		{
 			name: "3",
 			args: args{
 				start: "AAAAACCC",
 				end:   "AACCCCCC",
-<<<<<<< HEAD
-				bank: []string{
-					"AAAACCCC", "AAACCCCC", "AACCCCCC",
-				},
-			},
-			want: 3,
-		},
-		{
-			name: "4",
-			args: args{
-				start: "AACCGGTT",
-				end:   "AAACGGTA",
-				bank: []string{
-					"AACCGATT", "AACCGATA", "AAACGATA", "AAACGGTA",
-				},
-			},
-			want: 4,
-		},
-=======
 				bank:  []string{"AAAACCCC", "AAACCCCC", "AACCCCCC"},
 			},
 			want: 3,
 		},
->>>>>>> modify leetcode to project
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
