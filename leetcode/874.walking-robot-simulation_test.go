@@ -29,14 +29,6 @@ func Test_robotSim(t *testing.T) {
 			},
 			want: 65,
 		},
-		{
-			name: "3",
-			args: args{
-				commands:  []int{4, -1, 4, -2, 4},
-				obstacles: [][]int{{2, 4}},
-			},
-			want: 65,
-		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

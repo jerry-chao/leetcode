@@ -1,5 +1,7 @@
 package leetcode
 
+import "log"
+
 /*
  * @lc app=leetcode id=874 lang=golang
  *
@@ -70,35 +72,41 @@ package leetcode
  */
 
 // @lc code=start
+type block struct {
+	x int
+	y int
+}
+
+var blocks map[block]bool
+
 func robotSim(commands []int, obstacles [][]int) int {
-	// init obstacles
-	obstaclesPoint = map[point]bool{}
+	// init blocks
+	blocks = map[block]bool{}
 	for i := 0; i < len(obstacles); i++ {
-		obstaclesPoint[point{x: obstacles[i][0], y: obstacles[i][1]}] = true
+		blocks[block{x: obstacles[i][0], y: obstacles[i][1]}] = true
 	}
-	// loop commands
-	x, y := 0, 0
-	directions := [][]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
-	direct := 0
+
 	res := 0
+	dirs := [][]int{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
+	dir := 0
+	x, y := 0, 0
 	for i := 0; i < len(commands); i++ {
 		if commands[i] == -1 {
-			direct = (direct + 1) % 4
+			dir = (dir + 1) % 4
 		} else if commands[i] == -2 {
-			direct = (direct + 3) % 4
+			dir = (dir + 3) % 4
 		} else {
-			// caculate newx and newy
 			tmpX, tmpY := x, y
-			dirX, dirY := directions[direct][0], directions[direct][1]
-			for j := 1; j <= commands[i]; j++ {
-				newPoint := point{x: tmpX + dirX, y: tmpY + dirY}
-				if _, ok := obstaclesPoint[newPoint]; ok {
+			for j := 0; j < commands[i]; j++ {
+				tmpX = dirs[dir][0] + tmpX
+				tmpY = dirs[dir][1] + tmpY
+				if _, ok := blocks[block{x: tmpX, y: tmpY}]; ok {
+					log.Println("block", tmpX, tmpY)
 					break
-				} else {
-					tmpX, tmpY = newPoint.x, newPoint.y
 				}
 			}
 			x, y = tmpX, tmpY
+			log.Println(x, y)
 			if res < x*x+y*y {
 				res = x*x + y*y
 			}
@@ -106,12 +114,5 @@ func robotSim(commands []int, obstacles [][]int) int {
 	}
 	return res
 }
-
-type point struct {
-	x int
-	y int
-}
-
-var obstaclesPoint map[point]bool
 
 // @lc code=end
