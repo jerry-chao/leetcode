@@ -1,5 +1,10 @@
 package leetcode
 
+import (
+	"fmt"
+	"log"
+)
+
 /*
  * @lc app=leetcode id=153 lang=golang
  *
@@ -73,6 +78,7 @@ package leetcode
 // @lc code=start
 func findMin(nums []int) int {
 	l, r := 0, len(nums)-1
+	log.Println("finMin:")
 	for l < r {
 		if nums[l] < nums[r] {
 			return nums[l]
@@ -83,6 +89,7 @@ func findMin(nums []int) int {
 		} else {
 			r = mid
 		}
+		fmt.Println(l, r)
 	}
 	return nums[l]
 }

@@ -1,7 +1,5 @@
 package leetcode
 
-import "log"
-
 /*
  * @lc app=leetcode id=874 lang=golang
  *
@@ -98,15 +96,13 @@ func robotSim(commands []int, obstacles [][]int) int {
 		} else {
 			tmpX, tmpY := x, y
 			for j := 0; j < commands[i]; j++ {
-				tmpX = dirs[dir][0] + tmpX
-				tmpY = dirs[dir][1] + tmpY
-				if _, ok := blocks[block{x: tmpX, y: tmpY}]; ok {
-					log.Println("block", tmpX, tmpY)
+				if _, ok := blocks[block{x: dirs[dir][0] + tmpX, y: dirs[dir][1] + tmpY}]; ok {
 					break
 				}
+				tmpX = dirs[dir][0] + tmpX
+				tmpY = dirs[dir][1] + tmpY
 			}
 			x, y = tmpX, tmpY
-			log.Println(x, y)
 			if res < x*x+y*y {
 				res = x*x + y*y
 			}

@@ -71,12 +71,13 @@ package leetcode
 // @lc code=start
 func maxSubArray(nums []int) int {
 	// dp [i] = max (dp[i-1]+nums[i], nums[i])
-	pre, result := nums[0], nums[0]
+	dp := nums[0]
+	maxValue := dp
 	for i := 1; i < len(nums); i++ {
-		pre = max(pre+nums[i], nums[i])
-		result = max(pre, result)
+		dp = max(dp+nums[i], nums[i])
+		maxValue = max(dp, maxValue)
 	}
-	return result
+	return maxValue
 }
 
 // func max(i, j int) int {

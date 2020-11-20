@@ -2,7 +2,6 @@ package leetcode
 
 import (
 	"math"
-	"sort"
 )
 
 /*
@@ -78,27 +77,23 @@ import (
 // @lc code=start
 // dp[n] = min(dp[n-k]) + 1 k in coins
 func coinChange(coins []int, amount int) int {
-	sort.Ints(coins)
-	dpCoinChange = make([]int, amount+1)
-	dpCoinChange[0] = 0
-
+	// dp[i] = min(dp[i-k]) + 1 k in coins
+	dp := make([]int, amount+1)
+	dp[0] = 0
 	for i := 1; i <= amount; i++ {
-		minChange := math.MaxInt64
-		for _, coin := range coins {
-			if i >= coin {
-				minChange = min(minChange, dpCoinChange[i-coin])
+		dpMin := math.MaxInt64
+		for j := 0; j < len(coins); j++ {
+			if i >= coins[j] && dp[i-coins[j]] != -1 {
+				dpMin = min(dpMin, dp[i-coins[j]])
 			}
 		}
-		if minChange != math.MaxInt64 {
-			dpCoinChange[i] = minChange + 1
+		if dpMin == math.MaxInt64 {
+			dp[i] = -1
 		} else {
-			dpCoinChange[i] = math.MaxInt64
+			dp[i] = dpMin + 1
 		}
 	}
-	if dpCoinChange[amount] == math.MaxInt64 {
-		return -1
-	}
-	return dpCoinChange[amount]
+	return dp[amount]
 }
 
 // func min(i, j int) int {
@@ -107,7 +102,5 @@ func coinChange(coins []int, amount int) int {
 // 	}
 // 	return i
 // }
-
-var dpCoinChange []int
 
 // @lc code=end

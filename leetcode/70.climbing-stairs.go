@@ -11,11 +11,11 @@ func climbStairs(n int) int {
 	if n <= 2 {
 		return n
 	}
-	c1, c2 := 1, 2
+	dp0, dp1 := 1, 2
 	for i := 3; i <= n; i++ {
-		c1, c2 = c2, c1+c2
+		dp0, dp1 = dp1, dp0+dp1
 	}
-	return c2
+	return dp1
 }
 
 // @lc code=end

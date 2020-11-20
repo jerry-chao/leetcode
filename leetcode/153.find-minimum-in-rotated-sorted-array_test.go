@@ -14,6 +14,7 @@ func Test_findMin(t *testing.T) {
 		want int
 	}{
 		// TODO: Add test cases.
+
 		{
 			name: "1",
 			args: args{
@@ -46,6 +47,13 @@ func Test_findMin(t *testing.T) {
 			name: "5",
 			args: args{
 				nums: []int{2, 1},
+			},
+			want: 1,
+		},
+		{
+			name: "6",
+			args: args{
+				nums: []int{1},
 			},
 			want: 1,
 		},

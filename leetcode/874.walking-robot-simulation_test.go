@@ -12,7 +12,6 @@ func Test_robotSim(t *testing.T) {
 		args args
 		want int
 	}{
-		// TODO: Add test cases.
 		{
 			name: "1",
 			args: args{
