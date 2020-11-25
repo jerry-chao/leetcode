@@ -74,7 +74,7 @@ package leetcode
  */
 
 // @lc code=start
-func Count(b []byte) (int, int) {
+func count(b []byte) (int, int) {
 	if len(b) == 0 {
 		return 0, 0
 	}
@@ -102,7 +102,7 @@ func Count(b []byte) (int, int) {
 }
 
 func leastInterval(tasks []byte, n int) int {
-	max, ele := Count(tasks)
+	max, ele := count(tasks)
 	var point int
 	point = (n+1)*max - n + (ele - 1)
 	if len(tasks) < point {

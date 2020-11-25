@@ -7,6 +7,8 @@ package leetcode
  */
 
 // @lc code=start
+
+// Rotate rotate nums in k-group
 func Rotate(nums []int, k int) {
 	rotate(nums, k)
 }

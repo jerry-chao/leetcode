@@ -11,6 +11,8 @@ import (
  */
 
 // @lc code=start
+
+// IsPalindrome justice x is palindrome
 func IsPalindrome(x int) bool {
 	return isPalindrome(x)
 }

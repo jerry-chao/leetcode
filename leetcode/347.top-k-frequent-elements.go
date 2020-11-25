@@ -11,6 +11,8 @@ import (
  */
 
 // @lc code=start
+
+// TopKFrequent return top k frequent element
 func TopKFrequent(nums []int, k int) []int {
 	return topKFrequent(nums, k)
 }
@@ -48,6 +50,8 @@ type Item struct {
 	value    int
 	priority int
 }
+
+// PriorityQueue return element with priority
 type PriorityQueue []*Item
 
 func (pq PriorityQueue) Len() int { return len(pq) }
@@ -60,11 +64,13 @@ func (pq PriorityQueue) Swap(i, j int) {
 	pq[i], pq[j] = pq[j], pq[i]
 }
 
+// Push push x into PriorityQueue
 func (pq *PriorityQueue) Push(x interface{}) {
 	item := x.(*Item)
 	*pq = append(*pq, item)
 }
 
+// Pop pop priority queue
 func (pq *PriorityQueue) Pop() interface{} {
 	old := *pq
 	n := len(old)

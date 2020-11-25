@@ -7,6 +7,8 @@ package leetcode
  */
 
 // @lc code=start
+
+// MyCircularDeque struce for circular deque
 type MyCircularDeque struct {
 	Queue      []int
 	Count      int
@@ -14,7 +16,9 @@ type MyCircularDeque struct {
 	FrontIndex int
 }
 
-/** Initialize your data structure here. Set the size of the deque to be k. */
+/*
+ConstructorMyCircularDeque Initialize your data structure here. Set the size of the deque to be k.
+*/
 // func ConstructorMyCircularDeque(k int) MyCircularDeque {
 func ConstructorMyCircularDeque(k int) MyCircularDeque {
 	queue := make([]int, k)
@@ -27,74 +31,90 @@ func ConstructorMyCircularDeque(k int) MyCircularDeque {
 	}
 }
 
-/** Adds an item at the front of Deque. Return true if the operation is successful. */
-func (this *MyCircularDeque) InsertFront(value int) bool {
-	if this.IsFull() {
+/*
+InsertFront Adds an item at the front of Deque. Return true if the operation is successful.
+*/
+func (cd *MyCircularDeque) InsertFront(value int) bool {
+	if cd.IsFull() {
 		return false
 	}
-	frontIndex := (this.FrontIndex - 1 + this.Capacity) % this.Capacity
-	this.Queue[frontIndex] = value
-	this.FrontIndex = frontIndex
-	this.Count++
+	frontIndex := (cd.FrontIndex - 1 + cd.Capacity) % cd.Capacity
+	cd.Queue[frontIndex] = value
+	cd.FrontIndex = frontIndex
+	cd.Count++
 	return true
 }
 
-/** Adds an item at the rear of Deque. Return true if the operation is successful. */
-func (this *MyCircularDeque) InsertLast(value int) bool {
-	if this.IsFull() {
+/*
+InsertLast Adds an item at the rear of Deque. Return true if the operation is successful.
+*/
+func (cd *MyCircularDeque) InsertLast(value int) bool {
+	if cd.IsFull() {
 		return false
 	}
-	lastIndex := (this.FrontIndex + this.Count) % this.Capacity
-	this.Queue[lastIndex] = value
-	this.Count++
+	lastIndex := (cd.FrontIndex + cd.Count) % cd.Capacity
+	cd.Queue[lastIndex] = value
+	cd.Count++
 	return true
 }
 
-/** Deletes an item from the front of Deque. Return true if the operation is successful. */
-func (this *MyCircularDeque) DeleteFront() bool {
-	if this.IsEmpty() {
+/*
+DeleteFront Deletes an item from the front of Deque. Return true if the operation is successful.
+*/
+func (cd *MyCircularDeque) DeleteFront() bool {
+	if cd.IsEmpty() {
 		return false
 	}
-	this.Queue[this.FrontIndex] = -1
-	this.FrontIndex = (this.FrontIndex + 1) % this.Capacity
-	this.Count--
+	cd.Queue[cd.FrontIndex] = -1
+	cd.FrontIndex = (cd.FrontIndex + 1) % cd.Capacity
+	cd.Count--
 	return true
 }
 
-/** Deletes an item from the rear of Deque. Return true if the operation is successful. */
-func (this *MyCircularDeque) DeleteLast() bool {
-	if this.IsEmpty() {
+/*
+DeleteLast Deletes an item from the rear of Deque. Return true if the operation is successful.
+*/
+func (cd *MyCircularDeque) DeleteLast() bool {
+	if cd.IsEmpty() {
 		return false
 	}
-	this.Queue[(this.FrontIndex+this.Count-1)%this.Capacity] = -1
-	this.Count--
+	cd.Queue[(cd.FrontIndex+cd.Count-1)%cd.Capacity] = -1
+	cd.Count--
 	return true
 }
 
-/** Get the front item from the deque. */
-func (this *MyCircularDeque) GetFront() int {
-	if this.IsEmpty() {
+/*
+GetFront Get the front item from the deque.
+*/
+func (cd *MyCircularDeque) GetFront() int {
+	if cd.IsEmpty() {
 		return -1
 	}
-	return this.Queue[this.FrontIndex]
+	return cd.Queue[cd.FrontIndex]
 }
 
-/** Get the last item from the deque. */
-func (this *MyCircularDeque) GetRear() int {
-	if this.IsEmpty() {
+/*
+GetRear Get the last item from the deque.
+*/
+func (cd *MyCircularDeque) GetRear() int {
+	if cd.IsEmpty() {
 		return -1
 	}
-	return this.Queue[(this.FrontIndex+this.Count-1)%this.Capacity]
+	return cd.Queue[(cd.FrontIndex+cd.Count-1)%cd.Capacity]
 }
 
-/** Checks whether the circular deque is empty or not. */
-func (this *MyCircularDeque) IsEmpty() bool {
-	return this.Count == 0
+/*
+IsEmpty Checks whether the circular deque is empty or not.
+*/
+func (cd *MyCircularDeque) IsEmpty() bool {
+	return cd.Count == 0
 }
 
-/** Checks whether the circular deque is full or not. */
-func (this *MyCircularDeque) IsFull() bool {
-	return this.Capacity == this.Count
+/*
+IsFull Checks whether the circular deque is full or not.
+*/
+func (cd *MyCircularDeque) IsFull() bool {
+	return cd.Capacity == cd.Count
 }
 
 /**

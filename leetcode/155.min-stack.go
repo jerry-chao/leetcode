@@ -14,7 +14,9 @@ type MinStack struct {
 	Min   []int
 }
 
-/** initialize your data structure here. */
+/*
+Constructor initialize your data structure here.
+*/
 func Constructor() MinStack {
 	return MinStack{
 		Stack: []int{},
@@ -22,36 +24,38 @@ func Constructor() MinStack {
 	}
 }
 
-func (this *MinStack) Push(x int) {
-	this.Stack = append(this.Stack, x)
+// Push push x to min stack
+func (m *MinStack) Push(x int) {
+	m.Stack = append(m.Stack, x)
 	minValue := x
-	if len(this.Min) > 0 {
-		minValue = min(this.GetMin(), x)
+	if len(m.Min) > 0 {
+		minValue = min(m.GetMin(), x)
 	}
-	this.Min = append(this.Min, minValue)
+	m.Min = append(m.Min, minValue)
 }
 
-func (this *MinStack) Pop() {
-	if len(this.Stack) > 0 {
-		this.Stack = this.Stack[:len(this.Stack)-1]
-		this.Min = this.Min[:len(this.Min)-1]
-	}
-}
-
-func (this *MinStack) Top() int {
-	if len(this.Stack) > 0 {
-		return this.Stack[len(this.Stack)-1]
-	} else {
-		return -1
+// Pop pop the min value from stack
+func (m *MinStack) Pop() {
+	if len(m.Stack) > 0 {
+		m.Stack = m.Stack[:len(m.Stack)-1]
+		m.Min = m.Min[:len(m.Min)-1]
 	}
 }
 
-func (this *MinStack) GetMin() int {
-	if len(this.Stack) > 0 {
-		return this.Min[len(this.Min)-1]
-	} else {
-		return -1
+// Top return top of min stack
+func (m *MinStack) Top() int {
+	if len(m.Stack) > 0 {
+		return m.Stack[len(m.Stack)-1]
 	}
+	return -1
+}
+
+// GetMin get min of stack
+func (m *MinStack) GetMin() int {
+	if len(m.Stack) > 0 {
+		return m.Min[len(m.Min)-1]
+	}
+	return -1
 }
 
 // func min(i, j int) int {

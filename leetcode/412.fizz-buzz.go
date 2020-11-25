@@ -25,6 +25,7 @@ func fizzBuzzRec(n, max int, result []string) []string {
 	return fizzBuzzRec(n+1, max, result)
 }
 
+// Fizz val map to fizz string
 type Fizz struct {
 	Val int
 	Str string
@@ -44,9 +45,8 @@ func int2Str(n int) string {
 	}
 	if result == "" {
 		return strconv.Itoa(n)
-	} else {
-		return result
 	}
+	return result
 }
 
 // @lc code=end

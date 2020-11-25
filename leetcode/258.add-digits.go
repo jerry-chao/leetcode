@@ -1,5 +1,6 @@
 package leetcode
 
+// AddDigits add digits for each digit
 func AddDigits(num int) int {
 	return addDigits(num)
 }

@@ -11,6 +11,8 @@ import (
  */
 
 // @lc code=start
+
+// Reverse reverse x digit
 func Reverse(x int) int {
 	return reverse(x)
 }

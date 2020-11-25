@@ -107,9 +107,8 @@ func uniquePathsIII(grid [][]int) int {
 		if grid[v][h] == endSquare {
 			if length == emptySquares {
 				return out + 1
-			} else {
-				return out
 			}
+			return out
 		}
 		backtrackSquare := grid[v][h]
 		grid[v][h] = obstacleSquare

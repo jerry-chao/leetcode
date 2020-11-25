@@ -7,6 +7,8 @@ package leetcode
  */
 
 // @lc code=start
+
+// MyCircularQueue design for circular queue
 type MyCircularQueue struct {
 	Queue      []int
 	Capacity   int
@@ -14,8 +16,7 @@ type MyCircularQueue struct {
 	FrontIndex int
 }
 
-/** Initialize your data structure here. Set the size of the queue to be k. */
-// func Constructor(k int) MyCircularQueue {
+// ConstructorMyCircularQueue init my circular queue
 func ConstructorMyCircularQueue(k int) MyCircularQueue {
 	queue := make([]int, k)
 	for i := 0; i < k; i++ {
@@ -27,53 +28,65 @@ func ConstructorMyCircularQueue(k int) MyCircularQueue {
 	}
 }
 
-/** Insert an element into the circular queue. Return true if the operation is successful. */
-func (this *MyCircularQueue) EnQueue(value int) bool {
-	if this.IsFull() {
+/*
+EnQueue Insert an element into the circular queue. Return true if the operation is successful.
+*/
+func (cq *MyCircularQueue) EnQueue(value int) bool {
+	if cq.IsFull() {
 		return false
 	}
-	index := (this.FrontIndex + this.Count) % this.Capacity
-	this.Queue[index] = value
-	this.Count++
+	index := (cq.FrontIndex + cq.Count) % cq.Capacity
+	cq.Queue[index] = value
+	cq.Count++
 	return true
 }
 
-/** Delete an element from the circular queue. Return true if the operation is successful. */
-func (this *MyCircularQueue) DeQueue() bool {
-	if this.IsEmpty() {
+/*
+DeQueue Delete an element from the circular queue. Return true if the operation is successful.
+*/
+func (cq *MyCircularQueue) DeQueue() bool {
+	if cq.IsEmpty() {
 		return false
 	}
-	this.Queue[this.FrontIndex] = -1
-	this.FrontIndex = (this.FrontIndex + 1) % this.Capacity
-	this.Count--
+	cq.Queue[cq.FrontIndex] = -1
+	cq.FrontIndex = (cq.FrontIndex + 1) % cq.Capacity
+	cq.Count--
 	return true
 }
 
-/** Get the front item from the queue. */
-func (this *MyCircularQueue) Front() int {
-	if this.IsEmpty() {
+/*
+Front Get the front item from the queue.
+*/
+func (cq *MyCircularQueue) Front() int {
+	if cq.IsEmpty() {
 		return -1
 	}
-	return this.Queue[this.FrontIndex]
+	return cq.Queue[cq.FrontIndex]
 }
 
-/** Get the last item from the queue. */
-func (this *MyCircularQueue) Rear() int {
-	if this.IsEmpty() {
+/*
+Rear Get the last item from the queue.
+*/
+func (cq *MyCircularQueue) Rear() int {
+	if cq.IsEmpty() {
 		return -1
 	}
-	lastIndex := (this.FrontIndex + this.Count - 1) % this.Capacity
-	return this.Queue[lastIndex]
+	lastIndex := (cq.FrontIndex + cq.Count - 1) % cq.Capacity
+	return cq.Queue[lastIndex]
 }
 
-/** Checks whether the circular queue is empty or not. */
-func (this *MyCircularQueue) IsEmpty() bool {
-	return this.Count == 0
+/*
+IsEmpty Checks whether the circular queue is empty or not.
+*/
+func (cq *MyCircularQueue) IsEmpty() bool {
+	return cq.Count == 0
 }
 
-/** Checks whether the circular queue is full or not. */
-func (this *MyCircularQueue) IsFull() bool {
-	return this.Count == this.Capacity
+/*
+IsFull Checks whether the circular queue is full or not.
+*/
+func (cq *MyCircularQueue) IsFull() bool {
+	return cq.Count == cq.Capacity
 }
 
 /**
