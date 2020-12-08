@@ -62,32 +62,33 @@ package leetcode
 // @lc code=start
 func numIslands(grid [][]byte) int {
 	result := 0
-	nc := len(grid)
-	nr := len(grid[0])
-	for c := 0; c < nc; c++ {
-		for r := 0; r < nr; r++ {
-			if grid[c][r] == '1' {
+	nr := len(grid)
+	nc := len(grid[0])
+	for i := 0; i < nr; i++ {
+		for j := 0; j < nc; j++ {
+			if grid[i][j] == '1' {
 				result++
-				grid[c][r] = '0'
-				removeOneFromGrid(grid, c, r, nc, nr)
+				grid[i][j] = '0'
+				grid = clearRelations(grid, nr, nc, i, j)
 			}
 		}
 	}
 	return result
 }
 
-func removeOneFromGrid(grid [][]byte, c, r, nc, nr int) {
-	direction := [][]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}
-	for _, dr := range direction {
-		cNext := c + dr[0]
-		rNext := r + dr[1]
-		if cNext >= 0 && rNext >= 0 && cNext < nc && rNext < nr {
-			if grid[cNext][rNext] == '1' {
-				grid[cNext][rNext] = '0'
-				removeOneFromGrid(grid, cNext, rNext, nc, nr)
-			}
+var dRow = []int{0, 0, -1, 1}
+var dCol = []int{1, -1, 0, 0}
+
+func clearRelations(grid [][]byte, nr, nc, row, col int) [][]byte {
+	for i := 0; i < 4; i++ {
+		rowNew := row + dRow[i]
+		colNew := col + dCol[i]
+		if rowNew < nr && rowNew >= 0 && colNew < nc && colNew >= 0 && grid[rowNew][colNew] == '1' {
+			grid[rowNew][colNew] = '0'
+			grid = clearRelations(grid, nr, nc, rowNew, colNew)
 		}
 	}
+	return grid
 }
 
 // @lc code=end
