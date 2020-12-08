@@ -2,9 +2,9 @@ package leetcode
 
 import "testing"
 
-func Test_isPerfectSquare(t *testing.T) {
+func Test_isPowerOfTwo(t *testing.T) {
 	type args struct {
-		num int
+		n int
 	}
 	tests := []struct {
 		name string
@@ -14,22 +14,29 @@ func Test_isPerfectSquare(t *testing.T) {
 		{
 			name: "1",
 			args: args{
-				num: 16,
+				n: 1,
 			},
 			want: true,
 		},
 		{
 			name: "2",
 			args: args{
-				num: 14,
+				n: 16,
+			},
+			want: true,
+		},
+		{
+			name: "3",
+			args: args{
+				n: 218,
 			},
 			want: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := isPerfectSquare(tt.args.num); got != tt.want {
-				t.Errorf("isPerfectSquare() = %v, want %v", got, tt.want)
+			if got := isPowerOfTwo(tt.args.n); got != tt.want {
+				t.Errorf("isPowerOfTwo() = %v, want %v", got, tt.want)
 			}
 		})
 	}

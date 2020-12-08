@@ -65,7 +65,36 @@ package leetcode
 
 // @lc code=start
 func countSquares(matrix [][]int) int {
-	return 0
+	// dp[i][j] = min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1])
+	if len(matrix) == 0 {
+		return 0
+	}
+	if len(matrix[0]) == 0 {
+		return 0
+	}
+	ans := 0
+	for i := 0; i < len(matrix); i++ {
+		for j := 0; j < len(matrix[0]); j++ {
+			if i == 0 || j == 0 {
+				ans = ans + matrix[i][j]
+				continue
+			}
+			if matrix[i][j] == 1 {
+				matrix[i][j] = min(min(matrix[i][j-1], matrix[i-1][j]), matrix[i-1][j-1]) + 1
+			} else {
+				matrix[i][j] = 0
+			}
+			ans = ans + matrix[i][j]
+		}
+	}
+	return ans
 }
+
+// func min(i, j int) int {
+// 	if i > j {
+// 		return j
+// 	}
+// 	return i
+// }
 
 // @lc code=end

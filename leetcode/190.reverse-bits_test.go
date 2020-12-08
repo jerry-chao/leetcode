@@ -2,34 +2,34 @@ package leetcode
 
 import "testing"
 
-func Test_isPerfectSquare(t *testing.T) {
+func Test_reverseBits(t *testing.T) {
 	type args struct {
-		num int
+		num uint32
 	}
 	tests := []struct {
 		name string
 		args args
-		want bool
+		want uint32
 	}{
 		{
 			name: "1",
 			args: args{
-				num: 16,
+				num: 43261596,
 			},
-			want: true,
+			want: 964176192,
 		},
 		{
 			name: "2",
 			args: args{
-				num: 14,
+				num: 4294967293,
 			},
-			want: false,
+			want: 3221225471,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := isPerfectSquare(tt.args.num); got != tt.want {
-				t.Errorf("isPerfectSquare() = %v, want %v", got, tt.want)
+			if got := reverseBits(tt.args.num); got != tt.want {
+				t.Errorf("reverseBits() = %v, want %v", got, tt.want)
 			}
 		})
 	}

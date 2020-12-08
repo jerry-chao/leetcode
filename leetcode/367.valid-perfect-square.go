@@ -1,7 +1,5 @@
 package leetcode
 
-import "math"
-
 /*
  * @lc app=leetcode id=367 lang=golang
  *
@@ -49,16 +47,18 @@ func isPerfectSquare(num int) bool {
 }
 
 func sqrtSquare(num int) int {
-	curr := float64(1)
-	target := float64(num)
-	for {
-		pre := curr
-		curr = (curr + target/curr) * 0.5
-		if math.Abs(curr-pre) < 1e-7 {
-			break
+	l, r := 1, num
+	for l <= r {
+		mid := l + (r-l)>>2
+		if mid*mid == num {
+			return mid
+		} else if mid*mid < num {
+			l = mid + 1
+		} else {
+			r = mid - 1
 		}
 	}
-	return int(curr)
+	return l
 }
 
 // @lc code=end
