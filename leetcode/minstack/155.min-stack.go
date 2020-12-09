@@ -58,12 +58,12 @@ func (m *MinStack) GetMin() int {
 	return -1
 }
 
-// func min(i, j int) int {
-// 	if i > j {
-// 		return j
-// 	}
-// 	return i
-// }
+func min(i, j int) int {
+	if i > j {
+		return j
+	}
+	return i
+}
 
 /**
  * Your MinStack object will be instantiated and called as such:

@@ -19,10 +19,7 @@ func TestTrie_Insert(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			trie := &Trie{
-				children: tt.fields.children,
-				isEnd:    tt.fields.isEnd,
-			}
+			trie := &Trie{}
 			trie.Insert(tt.args.word)
 		})
 	}
